@@ -5,6 +5,7 @@ export const Navigation = () => {
     <nav className="flex gap-4 justify-center mt-8">
       <NavLink href="/">Posts</NavLink>
       <NavLink href="/about">About</NavLink>
+      <NavLink href="/uses">Uses</NavLink>
     </nav>
   );
 };
