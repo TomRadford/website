@@ -1,17 +1,12 @@
-import { render, route } from "rwsdk/router";
-import { defineApp } from "rwsdk/worker";
+import { WorkerEntrypoint } from "cloudflare:workers";
+import app from "./app";
 
-import { Document } from "@/app/Document";
-import { setCommonHeaders } from "@/app/headers";
-import { Home } from "@/app/pages/Home";
+export default class TomRadfordWebsite extends WorkerEntrypoint<Env> {
+  constructor(ctx: ExecutionContext, env: Env) {
+    super(ctx, env);
+  }
 
-export type AppContext = {};
-
-export default defineApp([
-  setCommonHeaders(),
-  ({ ctx }) => {
-    // setup ctx here
-    ctx;
-  },
-  render(Document, [route("/", Home)]),
-]);
+  fetch(request: Request) {
+    return app.fetch(request, this.env, this.ctx);
+  }
+}

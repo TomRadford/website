@@ -1,3 +1,3 @@
-export const Home = () => {
-  return <>root</>;
+export const HomePage = () => {
+  return <div className="">Hello World</div>;
 };
