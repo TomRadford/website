@@ -66,11 +66,3 @@ export const Logo = () => {
     </div>
   );
 };
-
-<svg width="217" height="5" viewBox="0 0 217 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path
-    d="M0.0675049 3.5C0.0675049 3.5 36.77 1 82.5675 1C128.365 0.999997 216.068 3 216.068 3"
-    stroke="white"
-    stroke-width="2"
-  />
-</svg>;
