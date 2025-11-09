@@ -13,7 +13,7 @@ export function AppLayout({ children, requestInfo }: LayoutProps) {
         {requestInfo && <span>Path: {new URL(requestInfo.request.url).pathname}</span>}
       </header>
       <main>{children}</main>
-      <footer>&copy; {new Date().getFullYear()}</footer>
+      <footer className="text-yellow">&copy; {new Date().getFullYear()}</footer>
     </div>
   );
 }
