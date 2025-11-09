@@ -6,6 +6,7 @@ import { setCommonHeaders } from "@/app/headers";
 import { HomePage } from "@/app/pages/home";
 import { AppLayout } from "./layout";
 import { NotFoundPage } from "./pages/not-found";
+import { AboutPage } from "./pages/about";
 
 export type AppContext = {};
 
@@ -15,5 +16,7 @@ export default defineApp([
     // setup ctx here
     ctx;
   },
-  render(Document, [layout(AppLayout, [route("/", HomePage), route("*", NotFoundPage)])]),
+  render(Document, [
+    layout(AppLayout, [route("/", HomePage), route("/about", AboutPage), route("*", NotFoundPage)]),
+  ]),
 ]);
