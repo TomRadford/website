@@ -7,9 +7,9 @@ export const Footer = () => {
   const sameCity = location.city === location.colo;
 
   return (
-    <footer className="text-center">
+    <footer className="text-center text-sm">
       <p>
-        <span className="text-sm">
+        <span>
           {sameCity ? (
             <span>
               Served up fresh from a worker near you in{" "}
@@ -17,9 +17,8 @@ export const Footer = () => {
             </span>
           ) : (
             <span>
-              Served up fresh to you in <span className="font-bold">{location.city}</span> from{" "}
-              Cloudflare
-              <span className="font-bold">{location.colo}</span>{" "}
+              Served up fresh to you in <span className="font-bold">{location.city}</span> from a
+              worker in <span className="font-bold">{location.colo}</span>
             </span>
           )}
         </span>
