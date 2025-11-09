@@ -1,24 +1,24 @@
-# RedwoodSDK Minimal Starter
+# Tom Radford's Webstie
 
-This is the starter project for RedwoodSDK. It's a template designed to get you up and running as quickly as possible.
+My personal site 🕺
 
-Create your new project:
+I use:
 
-```shell
-npx create-rwsdk my-project-name
-cd my-project-name
-npm install
-```
+- vite for bundling.
+- rwsdk for minimal web sdk that's easily deploy to a worker.
 
 ## Running the dev server
 
+Note that you only need cloudflare creds in env if you wanna run migrations
+
 ```shell
-npm run dev
+cp .env.example .env
 ```
 
-Point your browser to the URL displayed in the terminal (e.g. `http://localhost:5173/`). You should see a "Hello World" message in your browser.
+```shell
+pnpm run dev
+```
 
 ## Further Reading
 
 - [RedwoodSDK Documentation](https://docs.rwsdk.com/)
-- [Cloudflare Workers Documentation](https://developers.cloudflare.com/workers)
