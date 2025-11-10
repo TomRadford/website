@@ -4,7 +4,6 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Underline } from "@/app/components/shared/layout/underline";
-import { COLOS } from "../../../constants/colos";
 
 gsap.registerPlugin(useGSAP);
 
