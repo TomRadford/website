@@ -13,10 +13,12 @@ export const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; del
         gsap.fromTo(
           containerRef.current,
           {
+            translateY: 30,
             opacity: 0,
             filter: "blur(10px)",
           },
           {
+            translateY: 0,
             opacity: 1,
             filter: "blur(0px)",
             duration: 1,
