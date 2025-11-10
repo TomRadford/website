@@ -10,13 +10,11 @@ import { AboutPage } from "./pages/about";
 
 export type AppContext = {};
 
-export default defineApp([
+const app = defineApp([
   setCommonHeaders(),
-  ({ ctx }) => {
-    // setup ctx here
-    ctx;
-  },
   render(Document, [
     layout(AppLayout, [route("/", HomePage), route("/about", AboutPage), route("*", NotFoundPage)]),
   ]),
 ]);
+
+export default app;

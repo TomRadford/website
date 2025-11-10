@@ -1,4 +1,3 @@
-import { requestInfo } from "rwsdk/worker";
 import { getLocation } from "@/app/lib/location";
 
 export const Footer = () => {

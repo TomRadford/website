@@ -4,8 +4,6 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(useGSAP);
-
 export const Headline = () => {
   const headlineRef = useRef<HTMLHeadingElement>(null);
 

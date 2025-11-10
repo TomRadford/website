@@ -5,8 +5,6 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Underline } from "@/app/components/shared/layout/underline";
 
-gsap.registerPlugin(useGSAP);
-
 export const Logo = () => {
   const logoRef = useRef<HTMLHeadingElement>(null);
   const lineRef = useRef<SVGPathElement>(null);

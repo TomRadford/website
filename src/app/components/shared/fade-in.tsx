@@ -4,8 +4,6 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(useGSAP);
-
 export const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
