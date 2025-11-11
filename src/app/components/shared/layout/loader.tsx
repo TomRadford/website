@@ -4,8 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { getLocation } from "../../../lib/location";
+import { SunLoaderIcon } from "../icons/sun-loader";
 
-export const LOADER_DELAY_SECONDS = 1;
+export const LOADER_DELAY_SECONDS = 1.5;
 
 /**
  * Just hides the page until hydrated we dont get a flash of rendered content pre-hydration
@@ -39,11 +40,11 @@ export const Loader = ({ location }: { location: ReturnType<typeof getLocation> 
 
   return (
     <div className="z-50 fixed inset-0 bg-background">
-      <div
-        ref={textRef}
-        className="flex items-center justify-center h-full text-foreground text-sm font-extralight"
-      >
-        {isCapeTown ? <>Howdy, fellow Capetonian!</> : <>From Cape Town to {location.city}!</>}
+      <div ref={textRef} className="flex gap-4 items-center flex-col justify-center h-full">
+        <SunLoaderIcon className="w-10 h-10" />
+        <p className="text-foreground text-sm font-extralight">
+          {isCapeTown ? <>Howdy, fellow Capetonian!</> : <>From Cape Town to {location.city}!</>}
+        </p>
       </div>
     </div>
   );
