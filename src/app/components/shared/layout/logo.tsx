@@ -4,6 +4,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Underline } from "@/app/components/shared/layout/underline";
+import { LOADER_DELAY_SECONDS } from "./loader";
 
 export const Logo = () => {
   const logoRef = useRef<HTMLHeadingElement>(null);
@@ -29,6 +30,7 @@ export const Logo = () => {
         scale: 1,
         duration: 1,
         ease: "expo.out",
+        delay: LOADER_DELAY_SECONDS,
       });
 
       gsap.to(lineRef.current, {
@@ -36,7 +38,7 @@ export const Logo = () => {
         opacity: 1,
         duration: 0.8,
         ease: "power2.out",
-        delay: 0.3,
+        delay: LOADER_DELAY_SECONDS + 0.3,
       });
     }
   });

@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { LOADER_DELAY_SECONDS } from "./layout/loader";
 
 export const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -23,7 +24,7 @@ export const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; del
             filter: "blur(0px)",
             duration: 1,
             ease: "power2.out",
-            delay: delay,
+            delay: LOADER_DELAY_SECONDS + delay,
           },
         );
       }

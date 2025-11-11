@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { LOADER_DELAY_SECONDS } from "./loader";
 
 export const Headline = () => {
   const headlineRef = useRef<HTMLHeadingElement>(null);
@@ -19,7 +20,7 @@ export const Headline = () => {
         y: 0,
         duration: 1,
         ease: "expo.out",
-        delay: 0.5,
+        delay: LOADER_DELAY_SECONDS + 0.5,
       });
     }
   });
