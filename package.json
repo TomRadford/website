@@ -25,7 +25,10 @@
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "@radix-ui/react-slot": "^1.2.4",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.4.0",
     "@tailwindcss/vite": "^4.1.17",
+    "@types/three": "^0.181.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "gsap": "^3.13.0",
@@ -35,7 +38,8 @@
     "react-server-dom-webpack": "19.3.0-canary-561ee24d-20251101",
     "rwsdk": "1.0.0-beta.26",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.17"
+    "tailwindcss": "^4.1.17",
+    "three": "^0.181.1"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.13.18",
