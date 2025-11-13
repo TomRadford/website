@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Underline } from "@/app/components/shared/layout/underline";
 import { LOADER_DELAY_SECONDS } from "./loader";
+import { Typography } from "../typography";
 
 export const Logo = () => {
   const logoRef = useRef<HTMLHeadingElement>(null);
@@ -46,9 +47,9 @@ export const Logo = () => {
   return (
     <div className="relative inline-block">
       <Underline lineRef={lineRef} />
-      <h1 ref={logoRef} className="text-8xl font-extrabold relative">
+      <Typography element="h1" weight="extrabold" size="h1" ref={logoRef} className="relative">
         Tom
-      </h1>
+      </Typography>
     </div>
   );
 };

@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { getLocation } from "../../../lib/location";
 import { SunLoaderIcon } from "../icons/sun-loader";
+import { Typography } from "../typography";
 
 export const LOADER_DELAY_SECONDS = 1.5;
 
@@ -42,9 +43,14 @@ export const Loader = ({ location }: { location: ReturnType<typeof getLocation> 
     <div className="z-50 fixed inset-0 bg-background">
       <div ref={textRef} className="flex gap-4 items-center flex-col justify-center h-full">
         <SunLoaderIcon className="w-10 h-10" />
-        <p className="text-foreground text-sm font-extralight">
+        <Typography
+          element="p"
+          weight="light"
+          size="p"
+          className="text-foreground text-sm font-extralight"
+        >
           {isCapeTown ? <>Howdy, fellow Capetonian!</> : <>From Cape Town to {location.city}!</>}
-        </p>
+        </Typography>
       </div>
     </div>
   );

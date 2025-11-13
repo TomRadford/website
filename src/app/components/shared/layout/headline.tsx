@@ -4,6 +4,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { LOADER_DELAY_SECONDS } from "./loader";
+import { Typography } from "../typography";
 
 export const Headline = () => {
   const headlineRef = useRef<HTMLHeadingElement>(null);
@@ -26,8 +27,8 @@ export const Headline = () => {
   });
 
   return (
-    <h2 ref={headlineRef} className="text-xl font-bold">
-      Product Engineer
-    </h2>
+    <Typography element="h2" weight="bold" size="h4" ref={headlineRef} className="relative">
+      Software Engineer
+    </Typography>
   );
 };
