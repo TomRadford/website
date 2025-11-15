@@ -47,7 +47,13 @@ export const Logo = () => {
   return (
     <div className="relative inline-block">
       <Underline lineRef={lineRef} />
-      <Typography element="h1" weight="extrabold" size="h1" ref={logoRef} className="relative">
+      <Typography
+        element="h1"
+        weight="extrabold"
+        size="h1-fixed"
+        ref={logoRef}
+        className="relative"
+      >
         Tom
       </Typography>
     </div>

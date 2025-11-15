@@ -27,7 +27,13 @@ export const Headline = () => {
   });
 
   return (
-    <Typography element="h2" weight="semibold" size="h4" ref={headlineRef} className="relative">
+    <Typography
+      element="h2"
+      weight="semibold"
+      size="h4-fixed"
+      ref={headlineRef}
+      className="relative"
+    >
       go make stuff!
     </Typography>
   );
