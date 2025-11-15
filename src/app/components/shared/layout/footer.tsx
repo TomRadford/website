@@ -6,7 +6,7 @@ export const Footer = () => {
   const sameCity = location.city === location.colo;
 
   return (
-    <footer className="text-center text-sm">
+    <footer className="text-center text-sm px-10">
       <p>
         <span>
           {sameCity ? (
