@@ -1,7 +1,10 @@
 import { Slot } from "@radix-ui/react-slot";
 import { AnchorHTMLAttributes, ReactNode } from "react";
+import { RouteType } from "../..";
 
-type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement>;
+type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+  href: RouteType | `https://${string}`;
+};
 
 type AsChildProps = {
   asChild: boolean;

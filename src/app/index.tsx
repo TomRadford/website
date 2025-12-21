@@ -1,4 +1,4 @@
-import { layout, render, route } from "rwsdk/router";
+import { defineLinks, layout, render, route } from "rwsdk/router";
 import { defineApp } from "rwsdk/worker";
 
 import { Document } from "@/app/document";
@@ -6,14 +6,24 @@ import { setCommonHeaders } from "@/app/headers";
 import { HomePage } from "@/app/pages/home";
 import { AppLayout } from "./layout";
 import { NotFoundPage } from "./pages/not-found";
-import { AboutPage } from "./pages/about";
+import { PostsPage } from "./pages/posts";
 
 export type AppContext = {};
+
+/** Source of truth for all paths! */
+const ROUTES = [
+  { path: "/", component: HomePage },
+  { path: "/posts", component: PostsPage },
+] as const;
+
+export type RouteType = (typeof ROUTES)[number]["path"];
+
+export const link = defineLinks<RouteType[]>(ROUTES.map((r) => r.path));
 
 const app = defineApp([
   setCommonHeaders(),
   render(Document, [
-    layout(AppLayout, [route("/", HomePage), route("/about", AboutPage), route("*", NotFoundPage)]),
+    layout(AppLayout, [...ROUTES.map((r) => route(r.path, r.component)), route("*", NotFoundPage)]),
   ]),
 ]);
 

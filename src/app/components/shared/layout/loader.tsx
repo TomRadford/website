@@ -49,7 +49,11 @@ export const Loader = ({ location }: { location: ReturnType<typeof getLocation> 
           size="p"
           className="text-foreground text-sm font-extralight"
         >
-          {isCapeTown ? <>Howdy, fellow Capetonian!</> : <>From Cape Town to {location.city}!</>}
+          {isCapeTown ? (
+            <>Howdy, fellow Capetonian!</>
+          ) : (
+            <>From Cape Town to you in {location.city}!</>
+          )}
         </Typography>
       </div>
     </div>
