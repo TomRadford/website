@@ -5,7 +5,15 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { LOADER_DELAY_SECONDS } from "./layout/loader";
 
-export const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
+export const FadeIn = ({
+  children,
+  delay = 0,
+  className,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -32,5 +40,9 @@ export const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; del
     { scope: containerRef },
   );
 
-  return <div ref={containerRef}>{children}</div>;
+  return (
+    <div ref={containerRef} className={className}>
+      {children}
+    </div>
+  );
 };

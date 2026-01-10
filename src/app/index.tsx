@@ -7,6 +7,8 @@ import { HomePage } from "@/app/pages/home";
 import { AppLayout } from "./layout";
 import { NotFoundPage } from "./pages/not-found";
 import { PostsPage } from "./pages/posts";
+import { FilmPage } from "./pages/film";
+import { CreativeEngineerPage } from "./pages/creative-engineer";
 
 export type AppContext = {};
 
@@ -14,6 +16,8 @@ export type AppContext = {};
 const ROUTES = [
   { path: "/", component: HomePage },
   { path: "/posts", component: PostsPage },
+  { path: "/film", component: FilmPage },
+  { path: "/creative-engineer", component: CreativeEngineerPage },
 ] as const;
 
 export type RouteType = (typeof ROUTES)[number]["path"];

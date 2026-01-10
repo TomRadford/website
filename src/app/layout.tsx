@@ -12,7 +12,7 @@ export const AppLayout = ({ children, requestInfo }: LayoutProps) => {
   return (
     <>
       <Loader location={location} />
-      <div className="app mx-auto sm:max-w-3xl lg:max-w-6xl my-5">
+      <div className="app mx-auto sm:max-w-3xl lg:max-w-6xl my-5 min-h-screen">
         <header className="text-center mb-16">
           <Logo />
           <Headline />

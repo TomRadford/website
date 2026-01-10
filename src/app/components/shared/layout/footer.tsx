@@ -4,7 +4,7 @@ export const Footer = () => {
   const location = getLocation();
 
   return (
-    <footer className="text-center text-sm px-10">
+    <footer className="text-center text-sm px-10 mt-10">
       <p>
         <span>
           <span>

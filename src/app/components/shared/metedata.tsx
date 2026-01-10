@@ -4,14 +4,14 @@ export const Metadata = ({
   image,
   publishDate,
   author = "Tom Radford",
-  slug = "",
+  // slug = "",
 }: {
   title: string;
   description: string;
   image?: string;
   publishDate: string;
   author: string;
-  slug?: string;
+  // slug?: string;
 }) => {
   return (
     <>
@@ -34,7 +34,8 @@ export const Metadata = ({
       {/* <meta name="twitter:image" content={image.url} /> */}
 
       {/* Canonical URL */}
-      <link rel="canonical" href={`https://theradford.com/${slug}`} />
+      {/* ToDo: get this in a smart way */}
+      {/* <link rel="canonical" href={`https://tomradford.co.za/${slug}`} /> */}
     </>
   );
 };
