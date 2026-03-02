@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": "./src/worker.ts",
+  "name": "tomradford-website",
+  "compatibility_date": "2026-03-02",
+  // Add your bindings here, e.g.:
+  // "kv_namespaces": [{ "binding": "MY_KV", "id": "<namespace_id>" }]
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist",
+  },
+  "observability": {
+    "enabled": true,
+  },
+  "images": { "binding": "IMAGES" },
+  "kv_namespaces": [{ "binding": "SESSIONS" }],
+}

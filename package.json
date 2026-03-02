@@ -11,14 +11,19 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "deploy": "astro build && wrangler deploy",
+    "cf-typegen": "wrangler types"
   },
   "devDependencies": {
     "prettier": "^3.6.2",
-    "prettier-plugin-astro": "^0.14.1"
+    "prettier-plugin-astro": "^0.14.1",
+    "wrangler": "^4.69.0"
   },
   "dependencies": {
-    "astro": "^6.0.0-beta.6"
+    "@astrojs/cloudflare": "13.0.0-beta.11",
+    "astro": "^6.0.0-beta.6",
+    "zod": "^4.3.6"
   },
   "packageManager": "pnpm@9.15.9"
 }
