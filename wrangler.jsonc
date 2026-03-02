@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "main": "./src/worker.ts",
-  "name": "tomradford-website",
+  "name": "website",
   "compatibility_date": "2026-03-02",
   // Add your bindings here, e.g.:
   // "kv_namespaces": [{ "binding": "MY_KV", "id": "<namespace_id>" }]
