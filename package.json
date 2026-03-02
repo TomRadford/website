@@ -21,8 +21,8 @@
     "wrangler": "^4.69.0"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "13.0.0-beta.11",
-    "astro": "^6.0.0-beta.6",
+    "@astrojs/cloudflare": "https://pkg.pr.new/@astrojs/cloudflare@15694",
+    "astro": "https://pkg.pr.new/astro@15694",
     "zod": "^4.3.6"
   },
   "packageManager": "pnpm@9.15.9"
