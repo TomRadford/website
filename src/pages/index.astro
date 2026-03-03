@@ -1,8 +1,227 @@
 ---
-import Welcome from '../components/Welcome.astro'
+import { Image } from 'astro:assets'
+import MomentCard from '../components/home/MomentCard.astro'
 import Layout from '../layouts/Layout.astro'
+
+import heroPortrait from '../assets/home/hero-portrait.png'
+import momentBts from '../assets/home/moment-bts.jpg'
+import momentBuilding from '../assets/home/moment-building.jpg'
+import momentCommunity from '../assets/home/moment-community.jpg'
+import momentCuriousEye from '../assets/home/moment-curious-eye.jpg'
+import momentDebugging from '../assets/home/moment-debugging.jpg'
+import momentExplainingIdeas from '../assets/home/moment-explaining-ideas.jpg'
+import momentOnSet from '../assets/home/moment-on-set.jpg'
+import momentSharing from '../assets/home/moment-sharing.jpg'
 ---
 
-<Layout>
-  <Welcome />
+<Layout
+  description="Creative engineer shaping meaningful products through technical depth and strong vision."
+  title="Tom Radford | Creative Engineer"
+>
+  <section class="grid gap-4 md:grid-cols-[minmax(0,1fr)_22.5rem] md:gap-10" id="about">
+    <div class="flex flex-col gap-4">
+      <h1
+        class="text-[1.75rem] leading-[1.15] font-semibold text-foreground md:text-[3.125rem] md:leading-[1.1]"
+      >
+        Creative engineer shaping meaningful products through technical depth and strong vision.
+      </h1>
+      <p class="text-sm leading-[1.5] text-body-copy md:text-[1.1875rem] md:leading-[1.45]">
+        As a problem-orientated technologist, I thrive at the intersection between art, humans and
+        engineering. I am always pushing the limits of my ability to develop unique works and useful
+        solutions while maintaining a passion for collaboration and ingenuity.
+      </p>
+      <p class="font-mono text-xs leading-[1.6] text-muted-foreground md:text-[0.9375rem]">
+        React · Cinematography · Vue · Svelte · Next.js · Cloudflare · Hono · Drizzle · Agentic
+        workflows
+      </p>
+      <div class="flex gap-4">
+        <a
+          class="text-sm font-medium text-body-copy transition-colors hover:text-accent md:text-base"
+          href="#projects"
+        >
+          View projects →
+        </a>
+        <a
+          class="text-sm font-medium text-accent transition-opacity hover:opacity-80 md:text-base"
+          href="#writing"
+        >
+          Read blog →
+        </a>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <Image
+        alt="Tom Radford portrait"
+        class="h-[14.375rem] w-full rounded-[18px] object-cover md:h-[22.5rem]"
+        src={heroPortrait}
+      />
+      <p class="text-center text-xs text-muted-foreground">Me, stoked on building cool stuff.</p>
+    </div>
+  </section>
+
+  <section class="section-divider space-y-2 pt-4 md:pt-5" id="projects">
+    <h2 class="text-xl font-semibold text-foreground md:text-[1.375rem]">Sick projects</h2>
+    <p>
+      <a
+        class="text-[0.9375rem] leading-[1.4] text-body-copy transition-colors hover:text-accent md:text-lg"
+        href="#"
+      >
+        Simple train time updates and delays for the trains in Cape Town →
+      </a>
+    </p>
+    <p>
+      <a
+        class="text-[0.9375rem] leading-[1.4] text-body-copy transition-colors hover:text-accent md:text-lg"
+        href="#"
+      >
+        Gear list collaboration app with Shootdrop.com →
+      </a>
+    </p>
+    <p>
+      <a
+        class="text-[0.9375rem] leading-[1.4] text-body-copy transition-colors hover:text-accent md:text-lg"
+        href="#"
+      >
+        Colour-grading Transmission →
+      </a>
+    </p>
+  </section>
+
+  <section class="section-divider space-y-2 pt-4 md:pt-5" id="writing">
+    <h2 class="text-xl font-semibold text-foreground md:text-[1.375rem]">Latest writing</h2>
+    <p>
+      <a
+        class="text-[0.9375rem] leading-[1.4] text-body-copy transition-colors hover:text-accent md:text-lg"
+        href="#"
+      >
+        building a web-component with vue →
+      </a>
+    </p>
+    <p>
+      <a
+        class="text-[0.9375rem] leading-[1.4] text-body-copy transition-colors hover:text-accent md:text-lg"
+        href="#"
+      >
+        planning your next idea with exalidraw →
+      </a>
+    </p>
+    <p>
+      <a
+        class="text-[0.9375rem] leading-[1.4] text-body-copy transition-colors hover:text-accent md:text-lg"
+        href="#"
+      >
+        How I track trains in Cape Town →
+      </a>
+    </p>
+  </section>
+
+  <section class="section-divider space-y-2 pt-4 md:pt-5" id="moments">
+    <h2 class="text-lg font-semibold text-foreground md:text-[1.375rem]">Recent moments</h2>
+    <div class="moments-wrap">
+      <div class="moments-fade moments-fade-left"></div>
+      <div class="moments-fade moments-fade-right"></div>
+      <div class="moments-scroller">
+        <div class="moments-track">
+          <div class="moments-group">
+            <MomentCard
+              alt="Explaining ideas in motion"
+              caption="Explaining ideas in motion."
+              src={momentExplainingIdeas}
+            />
+            <MomentCard
+              alt="On set solving creative problems"
+              caption="On set, solving creative problems."
+              src={momentOnSet}
+            />
+            <MomentCard
+              alt="Collaborative product debugging"
+              caption="Collaborative product debugging."
+              src={momentDebugging}
+            />
+            <MomentCard
+              alt="Exploring with a curious eye"
+              caption="Exploring with a curious eye."
+              src={momentCuriousEye}
+            />
+            <MomentCard
+              alt="Community and shared momentum"
+              caption="Community and shared momentum."
+              src={momentCommunity}
+            />
+            <MomentCard
+              alt="Sharing what I learn"
+              caption="Sharing what I learn."
+              src={momentSharing}
+            />
+            <MomentCard
+              alt="Behind the scenes filmmaking"
+              caption="Behind the scenes filmmaking."
+              src={momentBts}
+            />
+            <MomentCard
+              alt="Building with great people"
+              caption="Building with great people."
+              src={momentBuilding}
+            />
+          </div>
+
+          <div aria-hidden="true" class="moments-group">
+            <MomentCard
+              alt="Explaining ideas in motion"
+              caption="Explaining ideas in motion."
+              decorative
+              src={momentExplainingIdeas}
+            />
+            <MomentCard
+              alt="On set solving creative problems"
+              caption="On set, solving creative problems."
+              decorative
+              src={momentOnSet}
+            />
+            <MomentCard
+              alt="Collaborative product debugging"
+              caption="Collaborative product debugging."
+              decorative
+              src={momentDebugging}
+            />
+            <MomentCard
+              alt="Exploring with a curious eye"
+              caption="Exploring with a curious eye."
+              decorative
+              src={momentCuriousEye}
+            />
+            <MomentCard
+              alt="Community and shared momentum"
+              caption="Community and shared momentum."
+              decorative
+              src={momentCommunity}
+            />
+            <MomentCard
+              alt="Sharing what I learn"
+              caption="Sharing what I learn."
+              decorative
+              src={momentSharing}
+            />
+            <MomentCard
+              alt="Behind the scenes filmmaking"
+              caption="Behind the scenes filmmaking."
+              decorative
+              src={momentBts}
+            />
+            <MomentCard
+              alt="Building with great people"
+              caption="Building with great people."
+              decorative
+              src={momentBuilding}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="hidden text-xs text-muted-foreground md:block">
+      Auto-scroll strip on web implementation
+    </p>
+    <p class="text-xs text-muted-foreground md:hidden">Swipe strip on mobile →</p>
+  </section>
 </Layout>

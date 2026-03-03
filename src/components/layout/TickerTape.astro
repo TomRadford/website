@@ -1,0 +1,21 @@
+---
+const labels = [
+  'Tom Radford',
+  'Tom Radford',
+  'Tom Radford',
+  'Tom Radford',
+  'Tom Radford',
+  'Tom Radford',
+]
+---
+
+<section aria-label="Site ticker tape" class="ticker-shell">
+  <div class="ticker-track">
+    <div class="ticker-group">
+      {labels.map((label) => <span class="ticker-item">{label}</span>)}
+    </div>
+    <div aria-hidden="true" class="ticker-group">
+      {labels.map((label) => <span class="ticker-item">{label}</span>)}
+    </div>
+  </div>
+</section>

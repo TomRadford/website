@@ -1,0 +1,92 @@
+<header class="w-full" id="top">
+  <nav class="flex items-center justify-between border-b border-border pb-2">
+    <a class="text-ticker-text" href="#top">
+      <span class="flex w-[6.75rem] flex-col gap-0.5 md:w-[7.5rem]">
+        <span class="brand-rule"></span>
+        <span class="text-center text-base font-black md:text-lg">Tom Radford</span>
+        <span class="brand-rule"></span>
+      </span>
+    </a>
+
+    <div class="hidden items-center gap-6 text-sm text-ticker-text md:flex">
+      <a class="transition-colors hover:text-accent" href="#about">About</a>
+      <a class="transition-colors hover:text-accent" href="#writing">Blog</a>
+      <a class="transition-colors hover:text-accent" href="#projects">Projects</a>
+      <button
+        aria-label="Toggle dark mode"
+        class="cursor-pointer transition-colors hover:text-accent"
+        data-theme-toggle
+        type="button"
+      >
+        Dark / Light
+      </button>
+    </div>
+
+    <button
+      aria-controls="mobile-nav-panel"
+      aria-expanded="false"
+      aria-label="Toggle menu"
+      class="flex h-[18px] w-6 cursor-pointer flex-col justify-between md:hidden"
+      data-mobile-menu-trigger
+      type="button"
+    >
+      <span class="h-0.5 w-full rounded bg-ticker-text"></span>
+      <span class="h-0.5 w-full rounded bg-ticker-text"></span>
+      <span class="h-0.5 w-full rounded bg-ticker-text"></span>
+    </button>
+  </nav>
+
+  <div class="hidden border-y border-border py-3 md:hidden" id="mobile-nav-panel">
+    <div class="flex flex-col gap-3">
+      <a
+        class="text-lg font-medium text-foreground transition-colors hover:text-accent"
+        href="#about"
+      >
+        About
+      </a>
+      <a
+        class="text-lg font-medium text-foreground transition-colors hover:text-accent"
+        href="#writing"
+      >
+        Blog
+      </a>
+      <a
+        class="text-lg font-medium text-foreground transition-colors hover:text-accent"
+        href="#projects"
+      >
+        Projects
+      </a>
+      <div class="h-px w-full bg-border"></div>
+      <button
+        aria-label="Toggle dark mode"
+        class="w-fit cursor-pointer text-sm text-muted-foreground transition-colors hover:text-accent"
+        data-theme-toggle
+        type="button"
+      >
+        Dark / Light
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const trigger = document.querySelector('[data-mobile-menu-trigger]')
+  const panel = document.querySelector('#mobile-nav-panel')
+
+  if (trigger instanceof HTMLButtonElement && panel instanceof HTMLDivElement) {
+    const closeMenu = () => {
+      panel.classList.add('hidden')
+      trigger.setAttribute('aria-expanded', 'false')
+    }
+
+    trigger.addEventListener('click', () => {
+      const expanded = trigger.getAttribute('aria-expanded') === 'true'
+      trigger.setAttribute('aria-expanded', String(!expanded))
+      panel.classList.toggle('hidden', expanded)
+    })
+
+    panel.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu)
+    })
+  }
+</script>

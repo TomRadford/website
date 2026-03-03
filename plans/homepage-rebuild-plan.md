@@ -4,16 +4,16 @@
 This plan rebuilds your homepage from the selected Pencil frames (`Portfolio Home Light v2`, `Portfolio Home Dark v2`, and `Portfolio Home Dark v2 Mobile` + `Menu Open`) using Astro + Tailwind v4 best practices, with all design tokens centralized in CSS, no typed content data objects, shared header/footer/tickertape in layout, Fontsource font setup, and dark mode via `dark:` utilities with persistent toggle behavior.
 
 ## Reference TODO
-- [ ] Remove scaffolded homepage component usage and switch to production page structure.
-- [ ] Define all theme/design tokens in global CSS (`:root` + `.dark`) from Pencil values.
-- [ ] Configure Tailwind v4 class-based dark variant for `dark:` utilities.
-- [ ] Install and wire Fontsource Geist + Geist Mono into Tailwind theme tokens.
-- [ ] Build shared layout shell with header, ticker tape, footer, and theme script.
-- [ ] Implement mobile hamburger panel behavior matching `Portfolio Home Dark v2 Mobile - Menu Open`.
-- [ ] Build homepage sections with hardcoded HTML content (no typed data layer).
-- [ ] Import image assets from `src/assets` and replace all placeholder/scaffold content.
-- [ ] Prepare MDX prose styling using Bearnie’s typography/prose approach.
-- [ ] Validate build, accessibility basics, responsive behavior, and theme persistence.
+- [x] Remove scaffolded homepage component usage and switch to production page structure.
+- [x] Define all theme/design tokens in global CSS (`:root` + `.dark`) from Pencil values.
+- [x] Configure Tailwind v4 class-based dark variant for `dark:` utilities.
+- [x] Install and wire Fontsource Geist + Geist Mono into Tailwind theme tokens.
+- [x] Build shared layout shell with header, ticker tape, footer, and theme script.
+- [x] Implement mobile hamburger panel behavior matching `Portfolio Home Dark v2 Mobile - Menu Open`.
+- [x] Build homepage sections with hardcoded HTML content (no typed data layer).
+- [x] Import image assets from `src/assets` and replace all placeholder/scaffold content.
+- [x] Prepare MDX prose styling using Bearnie’s typography/prose approach.
+- [x] Validate build, accessibility basics, responsive behavior, and theme persistence.
 
 ## Implementation Spec
 
