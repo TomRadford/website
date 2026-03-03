@@ -8467,12 +8467,12 @@
       "name": "Portfolio Home Light v1",
       "width": 1200,
       "fill": [
-        "#F8FAFC",
+        "#ffffffff",
         {
           "type": "gradient",
           "gradientType": "radial",
           "enabled": true,
-          "opacity": 0.75,
+          "opacity": 0.65,
           "rotation": 0,
           "size": {
             "width": 1.1,
@@ -8485,7 +8485,7 @@
             },
             {
               "color": "#BFDBFE99",
-              "position": 0.42
+              "position": 0.35
             },
             {
               "color": "#E2E8F055",
@@ -8494,6 +8494,10 @@
             {
               "color": "#F8FAFC00",
               "position": 1
+            },
+            {
+              "color": "#c4ddfc90",
+              "position": 0.4
             }
           ],
           "center": {
@@ -8533,14 +8537,14 @@
                 {
                   "type": "rectangle",
                   "id": "S3PC8",
-                  "fill": "#000000",
+                  "fill": "#64748b",
                   "width": "fill_container",
                   "height": 2
                 },
                 {
                   "type": "text",
                   "id": "LkwXs",
-                  "fill": "#0F172A",
+                  "fill": "#64748b",
                   "content": "Tom Radford",
                   "fontFamily": "Geist",
                   "fontSize": 18,
@@ -8549,7 +8553,7 @@
                 {
                   "type": "rectangle",
                   "id": "Flltg",
-                  "fill": "#000000",
+                  "fill": "#64748b",
                   "width": "fill_container",
                   "height": 2
                 }
@@ -9293,7 +9297,7 @@
                   "top": 3,
                   "bottom": 3
                 },
-                "fill": "#000000"
+                "fill": "#64748b"
               },
               "layout": "none",
               "children": [
@@ -9311,7 +9315,7 @@
                       "type": "text",
                       "id": "aFAUr",
                       "name": "t1",
-                      "fill": "#CBD5E1",
+                      "fill": "#64748b",
                       "content": "Tom Radford",
                       "fontFamily": "Geist",
                       "fontSize": 30,
@@ -9321,7 +9325,7 @@
                       "type": "text",
                       "id": "iEpQP",
                       "name": "t2",
-                      "fill": "#CBD5E1",
+                      "fill": "#64748b",
                       "content": "Tom Radford",
                       "fontFamily": "Geist",
                       "fontSize": 30,
@@ -9331,7 +9335,7 @@
                       "type": "text",
                       "id": "pNUGH",
                       "name": "t3",
-                      "fill": "#CBD5E1",
+                      "fill": "#64748b",
                       "content": "Tom Radford",
                       "fontFamily": "Geist",
                       "fontSize": 30,
@@ -9341,7 +9345,7 @@
                       "type": "text",
                       "id": "G6Xrx",
                       "name": "t4",
-                      "fill": "#CBD5E1",
+                      "fill": "#64748b",
                       "content": "Tom Radford",
                       "fontFamily": "Geist",
                       "fontSize": 30,
@@ -9351,7 +9355,7 @@
                       "type": "text",
                       "id": "9WQW9",
                       "name": "t5",
-                      "fill": "#CBD5E1",
+                      "fill": "#64748b",
                       "content": "Tom Radford",
                       "fontFamily": "Geist",
                       "fontSize": 30,
@@ -9361,7 +9365,7 @@
                       "type": "text",
                       "id": "sXBrw",
                       "name": "t6",
-                      "fill": "#CBD5E1",
+                      "fill": "#64748b",
                       "content": "Tom Radford",
                       "fontFamily": "Geist",
                       "fontSize": 30,
@@ -9375,7 +9379,7 @@
               "type": "text",
               "id": "9yhsr",
               "name": "location2",
-              "fill": "#60A5FA",
+              "fill": "#8295adff",
               "textGrowth": "fixed-width",
               "width": "fill_container",
               "content": "Cape Town, ZA",
@@ -9456,6 +9460,16 @@
               ]
             }
           ]
+        },
+        {
+          "type": "frame",
+          "id": "itr9T",
+          "name": "Frame 1",
+          "clip": true,
+          "width": 4,
+          "height": 1,
+          "fill": "#FFFFFF",
+          "layout": "none"
         }
       ]
     }
