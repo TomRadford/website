@@ -77,7 +77,7 @@ const {
         return mediaQuery.matches ? 'dark' : 'light'
       }
 
-      const applyTheme = (theme, persist = false) => {
+      const applyTheme = (theme: 'light' | 'dark', persist = false) => {
         root.classList.toggle('dark', theme === 'dark')
         if (persist) {
           localStorage.setItem(storageKey, theme)
