@@ -2160,17 +2160,27 @@
               "gap": 16,
               "children": [
                 {
-                  "type": "text",
-                  "id": "bHuw9",
-                  "name": "headline2",
-                  "fill": "#F9FAFB",
-                  "textGrowth": "fixed-width",
+                  "type": "frame",
+                  "id": "i6jgA",
+                  "name": "headlineRow2",
                   "width": "fill_container",
-                  "content": "Creative engineer shaping meaningful products through technical depth and strong vision.",
-                  "lineHeight": 1.1,
-                  "fontFamily": "Geist",
-                  "fontSize": 50,
-                  "fontWeight": "600"
+                  "gap": 16,
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "bHuw9",
+                      "name": "headline2",
+                      "fill": "#F9FAFB",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Creative engineer shaping meaningful products through technical depth and strong vision.",
+                      "lineHeight": 1.1,
+                      "fontFamily": "Geist",
+                      "fontSize": 50,
+                      "fontWeight": "600"
+                    }
+                  ]
                 },
                 {
                   "type": "text",
@@ -2802,159 +2812,183 @@
         },
         {
           "type": "frame",
-          "id": "p98Y0",
-          "name": "logoTickerSep",
-          "clip": true,
+          "id": "ficFR",
+          "name": "bottomCluster",
           "width": "fill_container",
-          "height": 52,
-          "stroke": {
-            "thickness": {
-              "top": 3,
-              "bottom": 3
-            },
-            "fill": "#ffffffff"
-          },
-          "layout": "none",
+          "layout": "vertical",
+          "gap": 20,
           "children": [
             {
               "type": "frame",
-              "id": "jLrRL",
-              "x": -140,
-              "y": 0,
-              "name": "tickerTrack",
+              "id": "p98Y0",
+              "name": "logoTickerSep",
+              "clip": true,
+              "width": "fill_container",
               "height": 52,
-              "gap": 25,
+              "stroke": {
+                "thickness": {
+                  "top": 3,
+                  "bottom": 3
+                },
+                "fill": "#ffffffff"
+              },
+              "layout": "none",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "jLrRL",
+                  "x": -140,
+                  "y": 0,
+                  "name": "tickerTrack",
+                  "height": 52,
+                  "gap": 25,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "MXQSm",
+                      "name": "t1",
+                      "fill": "#E2E8F0",
+                      "content": "Tom Radford",
+                      "fontFamily": "Geist",
+                      "fontSize": 30,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "URmt0",
+                      "name": "t2",
+                      "fill": "#E2E8F0",
+                      "content": "Tom Radford",
+                      "fontFamily": "Geist",
+                      "fontSize": 30,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "krXJf",
+                      "name": "t3",
+                      "fill": "#E2E8F0",
+                      "content": "Tom Radford",
+                      "fontFamily": "Geist",
+                      "fontSize": 30,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "iHTRv",
+                      "name": "t4",
+                      "fill": "#E2E8F0",
+                      "content": "Tom Radford",
+                      "fontFamily": "Geist",
+                      "fontSize": 30,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "8BOLz",
+                      "name": "t5",
+                      "fill": "#E2E8F0",
+                      "content": "Tom Radford",
+                      "fontFamily": "Geist",
+                      "fontSize": 30,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "JcXeY",
+                      "name": "t6",
+                      "fill": "#E2E8F0",
+                      "content": "Tom Radford",
+                      "fontFamily": "Geist",
+                      "fontSize": 30,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "ROPCX",
+              "name": "location2",
+              "fill": "#A5B4FC",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Cape Town, ZA",
+              "lineHeight": 1.4,
+              "textAlign": "center",
+              "fontFamily": "Geist Mono",
+              "fontSize": 14,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "J8osq",
+              "name": "footer",
+              "width": "fill_container",
+              "stroke": {
+                "thickness": {
+                  "top": 1
+                },
+                "fill": "#1F2430"
+              },
+              "padding": [
+                20,
+                0,
+                0,
+                0
+              ],
+              "justifyContent": "space_between",
               "alignItems": "center",
               "children": [
                 {
                   "type": "text",
-                  "id": "MXQSm",
-                  "name": "t1",
-                  "fill": "#E2E8F0",
-                  "content": "Tom Radford",
-                  "fontFamily": "Geist",
-                  "fontSize": 30,
-                  "fontWeight": "700"
-                },
-                {
-                  "type": "text",
-                  "id": "URmt0",
-                  "name": "t2",
-                  "fill": "#E2E8F0",
-                  "content": "Tom Radford",
-                  "fontFamily": "Geist",
-                  "fontSize": 30,
-                  "fontWeight": "700"
-                },
-                {
-                  "type": "text",
-                  "id": "krXJf",
-                  "name": "t3",
-                  "fill": "#E2E8F0",
-                  "content": "Tom Radford",
-                  "fontFamily": "Geist",
-                  "fontSize": 30,
-                  "fontWeight": "700"
-                },
-                {
-                  "type": "text",
-                  "id": "iHTRv",
-                  "name": "t4",
-                  "fill": "#E2E8F0",
-                  "content": "Tom Radford",
-                  "fontFamily": "Geist",
-                  "fontSize": 30,
-                  "fontWeight": "700"
-                },
-                {
-                  "type": "text",
-                  "id": "8BOLz",
-                  "name": "t5",
-                  "fill": "#E2E8F0",
-                  "content": "Tom Radford",
-                  "fontFamily": "Geist",
-                  "fontSize": 30,
-                  "fontWeight": "700"
-                },
-                {
-                  "type": "text",
-                  "id": "JcXeY",
-                  "name": "t6",
-                  "fill": "#E2E8F0",
-                  "content": "Tom Radford",
-                  "fontFamily": "Geist",
-                  "fontSize": 30,
-                  "fontWeight": "700"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "J8osq",
-          "name": "footer",
-          "width": "fill_container",
-          "stroke": {
-            "thickness": {
-              "top": 1
-            },
-            "fill": "#1F2430"
-          },
-          "padding": [
-            20,
-            0,
-            0,
-            0
-          ],
-          "justifyContent": "space_between",
-          "alignItems": "center",
-          "children": [
-            {
-              "type": "text",
-              "id": "4jlhJ",
-              "name": "email",
-              "fill": "#CBD5E1",
-              "content": "tom@theradford.com",
-              "fontFamily": "Geist",
-              "fontSize": 15,
-              "fontWeight": "normal"
-            },
-            {
-              "type": "text",
-              "id": "5ajDc",
-              "name": "tagline",
-              "fill": "#94A3B8",
-              "content": "Jazzed on creating meaningful problem-orientated solutions",
-              "fontFamily": "Geist",
-              "fontSize": 12,
-              "fontWeight": "normal"
-            },
-            {
-              "type": "frame",
-              "id": "FiZb3",
-              "name": "socials",
-              "gap": 18,
-              "children": [
-                {
-                  "type": "text",
-                  "id": "rrj0C",
-                  "name": "linkedin",
+                  "id": "4jlhJ",
+                  "name": "email",
                   "fill": "#CBD5E1",
-                  "content": "LinkedIn",
+                  "content": "tom@theradford.com",
                   "fontFamily": "Geist",
                   "fontSize": 15,
                   "fontWeight": "normal"
                 },
                 {
                   "type": "text",
-                  "id": "9vk8e",
-                  "name": "github",
-                  "fill": "#CBD5E1",
-                  "content": "GitHub",
+                  "id": "5ajDc",
+                  "name": "tagline",
+                  "fill": "#94A3B8",
+                  "content": "Jazzed on creating meaningful problem-orientated solutions",
                   "fontFamily": "Geist",
-                  "fontSize": 15,
+                  "fontSize": 12,
                   "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "FiZb3",
+                  "name": "socials",
+                  "gap": 18,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "rrj0C",
+                      "name": "linkedin",
+                      "fill": "#CBD5E1",
+                      "content": "LinkedIn",
+                      "fontFamily": "Geist",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "9vk8e",
+                      "name": "github",
+                      "fill": "#CBD5E1",
+                      "content": "GitHub",
+                      "fontFamily": "Geist",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
                 }
               ]
             }
@@ -7636,8 +7670,8 @@
     {
       "type": "frame",
       "id": "87sIv",
-      "x": 7190,
-      "y": 2763,
+      "x": 3940,
+      "y": 4540,
       "name": "Portfolio Home Dark v2 Mobile - Menu Open",
       "width": 430,
       "fill": [
