@@ -8464,7 +8464,7 @@
       "id": "Z3MHo",
       "x": 10286,
       "y": 2835,
-      "name": "Portfolio Home Light v1",
+      "name": "Portfolio Home Light v2",
       "width": 1200,
       "fill": [
         "#ffffffff",
@@ -8472,7 +8472,7 @@
           "type": "gradient",
           "gradientType": "radial",
           "enabled": true,
-          "opacity": 0.65,
+          "opacity": 0.4,
           "rotation": 0,
           "size": {
             "width": 1.1,
