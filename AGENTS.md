@@ -2,4 +2,4 @@
 - Do not use `npm` commands in this repository.
 - Prefer `pnpm add`, `pnpm add -D`, `pnpm install`, and `pnpm run <script>`.
 - Using Astro v6 beta with Tailwind V4. Please consult docs using the 'Astro Docs' MCP server.
-- When implementing commmon components please use the 'bearnie' MCP server to initialise a component for you to use.
+- When implementing commmon ui components (like Dialogs or Dropdowns) please use the 'bearnie' MCP server to initialise a component for you to use.
