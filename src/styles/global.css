@@ -85,7 +85,7 @@ body {
   overflow: hidden;
 }
 
-.page-frame::before {
+/* .page-frame::before {
   position: absolute;
   top: -35%;
   right: -30%;
@@ -103,7 +103,7 @@ body {
     var(--page-glow-4) 82%,
     var(--page-glow-3) 100%
   );
-}
+} */
 
 .page-frame > * {
   position: relative;
@@ -147,53 +147,6 @@ body {
   color: var(--ticker-text);
 }
 
-.moments-wrap {
-  position: relative;
-}
-
-.moments-scroller {
-  overflow: hidden;
-}
-
-.moments-track {
-  display: flex;
-  width: max-content;
-  gap: 0.875rem;
-  animation: moments-scroll 45s linear infinite;
-}
-
-.moments-group {
-  display: flex;
-  gap: 0.875rem;
-}
-
-.moments-fade {
-  position: absolute;
-  top: 0;
-  z-index: 2;
-  height: 14rem;
-  width: 6rem;
-  pointer-events: none;
-}
-
-.moments-fade-left {
-  left: 0;
-  background: linear-gradient(
-    90deg,
-    var(--scroller-fade) 0%,
-    color-mix(in oklab, var(--scroller-fade) 0%, transparent) 100%
-  );
-}
-
-.moments-fade-right {
-  right: 0;
-  background: linear-gradient(
-    270deg,
-    var(--scroller-fade) 0%,
-    color-mix(in oklab, var(--scroller-fade) 0%, transparent) 100%
-  );
-}
-
 .prose-site {
   max-width: 70ch;
   line-height: 1.7;
@@ -229,50 +182,13 @@ body {
   }
 }
 
-@media (max-width: 767px) {
-  .moments-scroller {
-    overflow-x: auto;
-    padding-bottom: 0.25rem;
-    scrollbar-width: none;
-    scroll-snap-type: x mandatory;
-  }
-
-  .moments-scroller::-webkit-scrollbar {
-    display: none;
-  }
-
-  .moments-track {
-    animation: none;
-    gap: 0.75rem;
-  }
-
-  .moments-group {
-    gap: 0.75rem;
-  }
-
-  .moments-fade {
-    display: none;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .ticker-track,
-  .moments-track {
+  .ticker-track {
     animation: none;
   }
 }
 
 @keyframes ticker-scroll {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-@keyframes moments-scroll {
   from {
     transform: translate3d(0, 0, 0);
   }

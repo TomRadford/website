@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets'
 import MomentCard from '../components/home/MomentCard.astro'
+import Scroller from '../components/ui/Scroller.astro'
 import Layout from '../layouts/Layout.astro'
 
 import heroPortrait from '../assets/home/hero-portrait.png'
@@ -12,14 +13,57 @@ import momentDebugging from '../assets/home/moment-debugging.jpg'
 import momentExplainingIdeas from '../assets/home/moment-explaining-ideas.jpg'
 import momentOnSet from '../assets/home/moment-on-set.jpg'
 import momentSharing from '../assets/home/moment-sharing.jpg'
+
+const moments = [
+  {
+    alt: 'Explaining ideas in motion',
+    caption: 'Explaining ideas in motion.',
+    src: momentExplainingIdeas,
+  },
+  {
+    alt: 'On set solving creative problems',
+    caption: 'On set, solving creative problems.',
+    src: momentOnSet,
+  },
+  {
+    alt: 'Collaborative product debugging',
+    caption: 'Collaborative product debugging.',
+    src: momentDebugging,
+  },
+  {
+    alt: 'Exploring with a curious eye',
+    caption: 'Exploring with a curious eye.',
+    src: momentCuriousEye,
+  },
+  {
+    alt: 'Community and shared momentum',
+    caption: 'Community and shared momentum.',
+    src: momentCommunity,
+  },
+  {
+    alt: 'Sharing what I learn',
+    caption: 'Sharing what I learn.',
+    src: momentSharing,
+  },
+  {
+    alt: 'Behind the scenes filmmaking',
+    caption: 'Behind the scenes filmmaking.',
+    src: momentBts,
+  },
+  {
+    alt: 'Building with great people',
+    caption: 'Building with great people.',
+    src: momentBuilding,
+  },
+]
 ---
 
 <Layout
   description="Creative engineer shaping meaningful products through technical depth and strong vision."
   title="Tom Radford | Creative Engineer"
 >
-  <section class="grid gap-8 md:grid-cols-2 md:gap-14" id="about">
-    <div class="flex flex-col gap-5 md:gap-6">
+  <section class="grid gap-8 md:grid-cols-5 md:gap-14" id="about">
+    <div class="flex flex-col gap-5 md:gap-6 md:col-span-3">
       <h1 class="text-3xl leading-tight font-semibold text-foreground md:text-5xl">
         Creative engineer shaping meaningful products through technical depth and strong vision.
       </h1>
@@ -48,7 +92,7 @@ import momentSharing from '../assets/home/moment-sharing.jpg'
       </div>
     </div>
 
-    <div class="flex flex-col gap-3 md:max-w-md md:justify-self-end">
+    <div class="flex flex-col gap-3 md:max-w-md md:justify-self-end md:col-span-2 md:my-auto">
       <Image
         alt="Tom Radford portrait"
         class="h-56 w-full rounded-2xl object-cover md:h-96"
@@ -116,107 +160,13 @@ import momentSharing from '../assets/home/moment-sharing.jpg'
 
   <section class="space-y-3" id="moments">
     <h2 class="text-lg font-semibold text-foreground md:text-2xl">Recent moments</h2>
-    <div class="moments-wrap">
-      <div class="moments-fade moments-fade-left"></div>
-      <div class="moments-fade moments-fade-right"></div>
-      <div class="moments-scroller">
-        <div class="moments-track">
-          <div class="moments-group">
-            <MomentCard
-              alt="Explaining ideas in motion"
-              caption="Explaining ideas in motion."
-              src={momentExplainingIdeas}
-            />
-            <MomentCard
-              alt="On set solving creative problems"
-              caption="On set, solving creative problems."
-              src={momentOnSet}
-            />
-            <MomentCard
-              alt="Collaborative product debugging"
-              caption="Collaborative product debugging."
-              src={momentDebugging}
-            />
-            <MomentCard
-              alt="Exploring with a curious eye"
-              caption="Exploring with a curious eye."
-              src={momentCuriousEye}
-            />
-            <MomentCard
-              alt="Community and shared momentum"
-              caption="Community and shared momentum."
-              src={momentCommunity}
-            />
-            <MomentCard
-              alt="Sharing what I learn"
-              caption="Sharing what I learn."
-              src={momentSharing}
-            />
-            <MomentCard
-              alt="Behind the scenes filmmaking"
-              caption="Behind the scenes filmmaking."
-              src={momentBts}
-            />
-            <MomentCard
-              alt="Building with great people"
-              caption="Building with great people."
-              src={momentBuilding}
-            />
-          </div>
-
-          <div aria-hidden="true" class="moments-group">
-            <MomentCard
-              alt="Explaining ideas in motion"
-              caption="Explaining ideas in motion."
-              decorative
-              src={momentExplainingIdeas}
-            />
-            <MomentCard
-              alt="On set solving creative problems"
-              caption="On set, solving creative problems."
-              decorative
-              src={momentOnSet}
-            />
-            <MomentCard
-              alt="Collaborative product debugging"
-              caption="Collaborative product debugging."
-              decorative
-              src={momentDebugging}
-            />
-            <MomentCard
-              alt="Exploring with a curious eye"
-              caption="Exploring with a curious eye."
-              decorative
-              src={momentCuriousEye}
-            />
-            <MomentCard
-              alt="Community and shared momentum"
-              caption="Community and shared momentum."
-              decorative
-              src={momentCommunity}
-            />
-            <MomentCard
-              alt="Sharing what I learn"
-              caption="Sharing what I learn."
-              decorative
-              src={momentSharing}
-            />
-            <MomentCard
-              alt="Behind the scenes filmmaking"
-              caption="Behind the scenes filmmaking."
-              decorative
-              src={momentBts}
-            />
-            <MomentCard
-              alt="Building with great people"
-              caption="Building with great people."
-              decorative
-              src={momentBuilding}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
+    <Scroller>
+      {
+        moments.map((moment) => (
+          <MomentCard alt={moment.alt} caption={moment.caption} src={moment.src} />
+        ))
+      }
+    </Scroller>
 
     <p class="text-xs text-muted-foreground md:hidden">Swipe strip on mobile →</p>
   </section>
