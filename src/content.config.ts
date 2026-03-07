@@ -10,7 +10,6 @@ const moments = defineCollection({
       alt: z.string(),
       caption: z.string(),
       image: image(),
-      order: z.number().int().nonnegative(),
     }),
 });
 

@@ -12,9 +12,7 @@ import PageLayout from '../layouts/PageLayout.astro';
 
 import heroPortrait from '../assets/hero-portrait.png';
 
-const moments = (await getCollection('moments')).sort(
-  (left, right) => left.data.order - right.data.order
-);
+const moments = await getCollection('moments');
 ---
 
 <RootLayout
