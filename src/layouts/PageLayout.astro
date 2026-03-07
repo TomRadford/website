@@ -2,9 +2,12 @@
 import SiteFooter from '../components/layout/SiteFooter.astro';
 import SiteHeader from '../components/layout/SiteHeader.astro';
 import TickerTape from '../components/layout/TickerTape.astro';
+import MeshGradient from '../components/layout/MeshGradient.astro';
 ---
 
-<div class="page-frame">
+<div
+  class="relative mx-auto z-10 flex min-h-screen max-w-6xl flex-col gap-6 overflow-hidden px-4 pt-5 pb-6 md:gap-8 md:px-8 md:pt-6 md:pb-8"
+>
   <a
     class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:rounded focus:bg-background focus:px-3 focus:py-2"
     href="#main-content"
@@ -18,6 +21,7 @@ import TickerTape from '../components/layout/TickerTape.astro';
   <TickerTape />
   <SiteFooter />
 </div>
+<MeshGradient class="fixed inset-0 w-full h-full" />
 
 <script>
   const storageKey = 'theme-preference';

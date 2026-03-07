@@ -1,0 +1,17 @@
+---
+interface Props {
+  class: string;
+}
+
+const { class: className }: Props = Astro.props;
+---
+
+<canvas id="mesh-gradient" class={className}></canvas>
+
+<script>
+  import { MeshGradient } from '@mesh-gradient/core';
+
+  const gradient = new MeshGradient();
+
+  gradient.init('#mesh-gradient', { cssVariablesFallback: true });
+</script>
