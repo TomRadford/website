@@ -18,16 +18,18 @@
   "devDependencies": {
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
- 		"wrangler": "^4.71.0"
+    "wrangler": "^4.71.0"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/mdx": "^4.3.13",
     "@fontsource-variable/geist": "^5.2.8",
     "@fontsource-variable/geist-mono": "^5.2.7",
+    "@lucide/astro": "^0.577.0",
     "@tailwindcss/vite": "^4.2.1",
- 		"astro": "^5.17.1",
+    "astro": "^5.17.1",
     "clsx": "^2.1.1",
+    "keen-slider": "^6.8.6",
     "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.2.1",
     "zod": "^4.3.6"

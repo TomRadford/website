@@ -1,7 +1,9 @@
 ---
 import { Image } from 'astro:assets'
 import MomentCard from '../components/home/MomentCard.astro'
-import Scroller from '../components/ui/Scroller.astro'
+import Carousel from '../components/bearnie/carousel/Carousel.astro'
+import CarouselContent from '../components/bearnie/carousel/CarouselContent.astro'
+import CarouselItem from '../components/bearnie/carousel/CarouselItem.astro'
 import RootLayout from '../layouts/RootLayout.astro'
 import PageLayout from '../layouts/PageLayout.astro'
 
@@ -161,14 +163,18 @@ const moments = [
     </section>
 
     <section class="space-y-3" id="moments">
-      <h2 class="text-lg font-semibold text-foreground md:text-2xl">Tom in action</h2>
-      <Scroller>
-        {
-          moments.map((moment) => (
-            <MomentCard alt={moment.alt} caption={moment.caption} src={moment.src} />
-          ))
-        }
-      </Scroller>
+      <h2 class="text-lg font-semibold text-foreground md:text-2xl">Me in action</h2>
+      <Carousel class="overflow-visible" slidesPerView="auto" spacing={14} autoplay={false}>
+        <CarouselContent>
+          {
+            moments.map((moment) => (
+              <CarouselItem class="w-72 flex-none max-md:w-60">
+                <MomentCard alt={moment.alt} caption={moment.caption} src={moment.src} />
+              </CarouselItem>
+            ))
+          }
+        </CarouselContent>
+      </Carousel>
 
       <p class="text-xs text-muted-foreground md:hidden">Swipe strip on mobile →</p>
     </section>

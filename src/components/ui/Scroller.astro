@@ -31,7 +31,7 @@ const { class: className, duration = '45s', fade = true }: Props = Astro.props
       <div class="flex gap-3.5 max-md:gap-3">
         <slot />
       </div>
-      <div aria-hidden="true" class="flex gap-3.5 max-md:gap-3">
+      <div aria-hidden="true" class="scroller-track-duplicate hidden gap-3.5 max-md:flex max-md:gap-3">
         <slot />
       </div>
     </div>
@@ -72,6 +72,16 @@ const { class: className, duration = '45s', fade = true }: Props = Astro.props
   @media (max-width: 767px) {
     .scroller-track {
       animation: none;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .scroller-track {
+      animation: none;
+    }
+
+    .scroller-track-duplicate {
+      display: none;
     }
   }
 
