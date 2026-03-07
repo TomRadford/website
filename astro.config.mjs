@@ -9,6 +9,9 @@ export default defineConfig({
     },
     imageService: 'cloudflare',
   }),
+  image: {
+    layout: 'constrained',
+  },
   vite: {
     plugins: [tailwindcss()],
   },
