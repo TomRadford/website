@@ -11,7 +11,51 @@ const { class: className }: Props = Astro.props;
 <script>
   import { MeshGradient } from '@mesh-gradient/core';
 
-  const gradient = new MeshGradient();
+  const canvas = document.querySelector<HTMLCanvasElement>('#mesh-gradient');
+  const root = document.documentElement;
 
-  gradient.init('#mesh-gradient', { cssVariablesFallback: true });
+  if (!canvas) {
+    throw new Error('Mesh gradient canvas not found');
+  }
+
+  let gradient: MeshGradient | undefined;
+  let frame = 0;
+  let currentTheme: boolean = root.classList.contains('dark');
+
+  const initGradient = () => {
+    gradient?.destroy();
+    gradient = new MeshGradient();
+    gradient.init(canvas, {
+      cssVariablesFallback: true,
+      seed: 5,
+      frequency: 0.0001,
+      animationSpeed: 1,
+    });
+  };
+
+  const scheduleInit = () => {
+    cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(() => {
+      initGradient();
+    });
+  };
+
+  const observer = new MutationObserver(() => {
+    const nextTheme: boolean = root.classList.contains('dark');
+    if (nextTheme === currentTheme) return;
+
+    currentTheme = nextTheme;
+    scheduleInit();
+  });
+
+  const cleanup = () => {
+    console.log('cleanup');
+    cancelAnimationFrame(frame);
+    observer.disconnect();
+    gradient?.destroy();
+  };
+
+  scheduleInit();
+  observer.observe(root, { attributes: true, attributeFilter: ['class'] });
+  window.addEventListener('pagehide', cleanup, { once: true });
 </script>
