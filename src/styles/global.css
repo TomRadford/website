@@ -1,6 +1,10 @@
 @import 'tailwindcss';
 @custom-variant dark (&:where(.dark, .dark *));
 
+@view-transition {
+  navigation: auto;
+}
+
 @theme {
   --font-sans:
     'Geist Variable', 'Geist', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
