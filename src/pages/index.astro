@@ -1,223 +1,150 @@
 ---
-import { Image } from 'astro:assets'
-import MomentCard from '../components/home/MomentCard.astro'
-import Layout from '../layouts/Layout.astro'
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import MomentCard from '../components/home/MomentCard.astro';
+import Carousel from '../components/bearnie/carousel/Carousel.astro';
+import CarouselContent from '../components/bearnie/carousel/CarouselContent.astro';
+import CarouselItem from '../components/bearnie/carousel/CarouselItem.astro';
+import CarouselNext from '../components/bearnie/carousel/CarouselNext.astro';
+import CarouselPrevious from '../components/bearnie/carousel/CarouselPrevious.astro';
+import RootLayout from '../layouts/RootLayout.astro';
+import PageLayout from '../layouts/PageLayout.astro';
+import Link from '../components/ui/Link.astro';
 
-import heroPortrait from '../assets/home/hero-portrait.png'
-import momentBts from '../assets/home/moment-bts.jpg'
-import momentBuilding from '../assets/home/moment-building.jpg'
-import momentCommunity from '../assets/home/moment-community.jpg'
-import momentCuriousEye from '../assets/home/moment-curious-eye.jpg'
-import momentDebugging from '../assets/home/moment-debugging.jpg'
-import momentExplainingIdeas from '../assets/home/moment-explaining-ideas.jpg'
-import momentOnSet from '../assets/home/moment-on-set.jpg'
-import momentSharing from '../assets/home/moment-sharing.jpg'
+import heroPortrait from '../assets/hero-portrait.png';
+
+const moments = await getCollection('moments');
+const skills = [
+  'Web dev',
+  'Runner',
+  'React user',
+  'Mountain explorer',
+  'Javascript fiend',
+  'Wave-rider',
+  'Mentor',
+  'Folktronica & house lover',
+  'Cloudflarer',
+  'Mentee',
+  'Camera-person',
+  'DnB enjoyer',
+  'Hype-person',
+];
 ---
 
-<Layout
+<RootLayout
   description="Creative engineer shaping meaningful products through technical depth and strong vision."
-  title="Tom Radford | Creative Engineer"
+  title="Creative Engineer"
 >
-  <section class="grid gap-8 md:grid-cols-2 md:gap-14" id="about">
-    <div class="flex flex-col gap-5 md:gap-6">
-      <h1 class="text-3xl leading-tight font-semibold text-foreground md:text-5xl">
-        Creative engineer shaping meaningful products through technical depth and strong vision.
-      </h1>
-      <p class="text-sm leading-normal text-body-copy md:text-lg">
-        As a problem-orientated technologist, I thrive at the intersection between art, humans and
-        engineering. I am always pushing the limits of my ability to develop unique works and useful
-        solutions while maintaining a passion for collaboration and ingenuity.
-      </p>
-      <p class="font-mono text-xs leading-relaxed text-muted-foreground md:text-sm">
-        React · Cinematography · Vue · Svelte · Next.js · Cloudflare · Hono · Drizzle · Agentic
-        workflows
-      </p>
-      <div class="flex gap-5">
-        <a
-          class="text-sm font-medium text-body-copy transition-colors hover:text-accent md:text-base"
-          href="#projects"
-        >
-          View projects →
-        </a>
-        <a
-          class="text-sm font-medium text-accent transition-opacity hover:opacity-80 md:text-base"
-          href="#writing"
-        >
-          Read blog →
-        </a>
-      </div>
-    </div>
-
-    <div class="flex flex-col gap-3 md:max-w-md md:justify-self-end">
-      <Image
-        alt="Tom Radford portrait"
-        class="h-56 w-full rounded-2xl object-cover md:h-96"
-        src={heroPortrait}
-      />
-      <p class="text-center text-xs text-muted-foreground">Me, stoked on building cool stuff.</p>
-    </div>
-  </section>
-
-  <section class="space-y-3" id="projects">
-    <h2 class="text-xl font-semibold text-foreground md:text-2xl">Sick projects</h2>
-    <p>
-      <a
-        class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
-        href="#"
-      >
-        Simple train time updates and delays for the trains in Cape Town →
-      </a>
-    </p>
-    <p>
-      <a
-        class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
-        href="#"
-      >
-        Gear list collaboration app with Shootdrop.com →
-      </a>
-    </p>
-    <p>
-      <a
-        class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
-        href="#"
-      >
-        Colour-grading Transmission →
-      </a>
-    </p>
-  </section>
-
-  <section class="space-y-3" id="writing">
-    <h2 class="text-xl font-semibold text-foreground md:text-2xl">Latest writing</h2>
-    <p>
-      <a
-        class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
-        href="#"
-      >
-        building a web-component with vue →
-      </a>
-    </p>
-    <p>
-      <a
-        class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
-        href="#"
-      >
-        planning your next idea with exalidraw →
-      </a>
-    </p>
-    <p>
-      <a
-        class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
-        href="#"
-      >
-        How I track trains in Cape Town →
-      </a>
-    </p>
-  </section>
-
-  <section class="space-y-3" id="moments">
-    <h2 class="text-lg font-semibold text-foreground md:text-2xl">Recent moments</h2>
-    <div class="moments-wrap">
-      <div class="moments-fade moments-fade-left"></div>
-      <div class="moments-fade moments-fade-right"></div>
-      <div class="moments-scroller">
-        <div class="moments-track">
-          <div class="moments-group">
-            <MomentCard
-              alt="Explaining ideas in motion"
-              caption="Explaining ideas in motion."
-              src={momentExplainingIdeas}
-            />
-            <MomentCard
-              alt="On set solving creative problems"
-              caption="On set, solving creative problems."
-              src={momentOnSet}
-            />
-            <MomentCard
-              alt="Collaborative product debugging"
-              caption="Collaborative product debugging."
-              src={momentDebugging}
-            />
-            <MomentCard
-              alt="Exploring with a curious eye"
-              caption="Exploring with a curious eye."
-              src={momentCuriousEye}
-            />
-            <MomentCard
-              alt="Community and shared momentum"
-              caption="Community and shared momentum."
-              src={momentCommunity}
-            />
-            <MomentCard
-              alt="Sharing what I learn"
-              caption="Sharing what I learn."
-              src={momentSharing}
-            />
-            <MomentCard
-              alt="Behind the scenes filmmaking"
-              caption="Behind the scenes filmmaking."
-              src={momentBts}
-            />
-            <MomentCard
-              alt="Building with great people"
-              caption="Building with great people."
-              src={momentBuilding}
-            />
-          </div>
-
-          <div aria-hidden="true" class="moments-group">
-            <MomentCard
-              alt="Explaining ideas in motion"
-              caption="Explaining ideas in motion."
-              decorative
-              src={momentExplainingIdeas}
-            />
-            <MomentCard
-              alt="On set solving creative problems"
-              caption="On set, solving creative problems."
-              decorative
-              src={momentOnSet}
-            />
-            <MomentCard
-              alt="Collaborative product debugging"
-              caption="Collaborative product debugging."
-              decorative
-              src={momentDebugging}
-            />
-            <MomentCard
-              alt="Exploring with a curious eye"
-              caption="Exploring with a curious eye."
-              decorative
-              src={momentCuriousEye}
-            />
-            <MomentCard
-              alt="Community and shared momentum"
-              caption="Community and shared momentum."
-              decorative
-              src={momentCommunity}
-            />
-            <MomentCard
-              alt="Sharing what I learn"
-              caption="Sharing what I learn."
-              decorative
-              src={momentSharing}
-            />
-            <MomentCard
-              alt="Behind the scenes filmmaking"
-              caption="Behind the scenes filmmaking."
-              decorative
-              src={momentBts}
-            />
-            <MomentCard
-              alt="Building with great people"
-              caption="Building with great people."
-              decorative
-              src={momentBuilding}
-            />
-          </div>
+  <PageLayout>
+    <section class="grid gap-8 md:grid-cols-5 md:gap-14" id="about">
+      <div class="flex flex-col gap-5 md:gap-6 md:col-span-3">
+        <h1 class="text-3xl leading-tight font-semibold text-foreground md:text-5xl">
+          Creative engineer shaping meaningful products through technical depth and strong vision.
+        </h1>
+        <p class="text-sm leading-normal text-body-copy md:text-lg">
+          As a problem-orientated technologist, I thrive at the intersection between art, humans and
+          engineering. I am always pushing the limits of my ability to develop unique works and
+          useful solutions while maintaining a passion for collaboration and ingenuity.
+        </p>
+        <p class="font-mono text-xs leading-relaxed text-muted-foreground md:text-sm">
+          {
+            skills.map((skill, index) => (
+              <>
+                {index > 0 && ' · '}
+                {skill}
+              </>
+            ))
+          }
+        </p>
+        <div class="flex gap-5">
+          <Link href="#projects"> Projects → </Link>
+          <Link href="#writing" variant="accent"> Writing → </Link>
         </div>
       </div>
-    </div>
 
-    <p class="text-xs text-muted-foreground md:hidden">Swipe strip on mobile →</p>
-  </section>
-</Layout>
+      <div class="flex flex-col gap-3 md:max-w-md md:justify-self-end md:col-span-2 md:my-auto">
+        <Image
+          alt="Tom Radford portrait"
+          class="h-96 w-full rounded-2xl object-cover md:h-96"
+          src={heroPortrait}
+        />
+        <p class="text-center text-xs text-muted-foreground">Me, stoked on building cool shit.</p>
+      </div>
+    </section>
+
+    <section class="space-y-3" id="projects">
+      <h2 class="text-xl font-semibold text-foreground md:text-2xl">Sick projects</h2>
+      <p>
+        <a
+          class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
+          href="#"
+        >
+          Simple train time updates and delays for the trains in Cape Town →
+        </a>
+      </p>
+      <p>
+        <a
+          class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
+          href="#"
+        >
+          Gear list collaboration app with Shootdrop.com →
+        </a>
+      </p>
+      <p>
+        <a
+          class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
+          href="#"
+        >
+          Colour-grading Transmission →
+        </a>
+      </p>
+    </section>
+
+    <section class="space-y-3" id="writing">
+      <h2 class="text-xl font-semibold text-foreground md:text-2xl">Latest writing</h2>
+      <p>
+        <a
+          class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
+          href="#"
+        >
+          building a web-component with vue →
+        </a>
+      </p>
+      <p>
+        <a
+          class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
+          href="#"
+        >
+          planning your next idea with exalidraw →
+        </a>
+      </p>
+      <p>
+        <a
+          class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
+          href="#"
+        >
+          How I track trains in Cape Town →
+        </a>
+      </p>
+    </section>
+
+    <section class="space-y-3 mb-8" id="moments">
+      <h2 class="text-lg font-semibold text-foreground md:text-2xl">Me in action</h2>
+      <div class="relative">
+        <Carousel class="overflow-visible" slidesPerView="auto" spacing={14} autoplay={false}>
+          <CarouselPrevious />
+          <CarouselNext />
+          <CarouselContent>
+            {
+              moments.map((moment) => (
+                <CarouselItem class="w-72 flex-none max-md:w-60">
+                  <MomentCard caption={moment.data.caption} src={moment.data.image} />
+                </CarouselItem>
+              ))
+            }
+          </CarouselContent>
+        </Carousel>
+      </div>
+    </section>
+  </PageLayout>
+</RootLayout>

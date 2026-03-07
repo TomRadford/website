@@ -1,0 +1,106 @@
+---
+interface Props {
+  class?: string;
+  duration?: string;
+  fade?: boolean;
+}
+
+const { class: className, duration = '45s', fade = true }: Props = Astro.props;
+---
+
+<div class:list={['relative', className]} style={`--scroller-duration: ${duration};`}>
+  {
+    fade && (
+      <>
+        <div
+          aria-hidden="true"
+          class="scroller-fade-left pointer-events-none absolute inset-y-0 left-0 z-10 w-24 max-md:hidden"
+        />
+        <div
+          aria-hidden="true"
+          class="scroller-fade-right pointer-events-none absolute inset-y-0 right-0 z-10 w-24 max-md:hidden"
+        />
+      </>
+    )
+  }
+
+  <div
+    class="scroller-shell overflow-hidden max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory max-md:scroll-smooth max-md:pb-1"
+  >
+    <div class="scroller-track flex w-max gap-3.5 max-md:gap-3">
+      <div class="flex gap-3.5 max-md:gap-3">
+        <slot />
+      </div>
+      <div
+        aria-hidden="true"
+        class="scroller-track-duplicate hidden gap-3.5 max-md:flex max-md:gap-3"
+      >
+        <slot />
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .scroller-shell {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scroller-shell::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scroller-track {
+    animation: scroller-scroll var(--scroller-duration) linear infinite;
+    will-change: transform;
+  }
+
+  .scroller-fade-left {
+    background: linear-gradient(
+      90deg,
+      var(--scroller-fade) 0%,
+      color-mix(in oklab, var(--scroller-fade) 0%, transparent) 100%
+    );
+  }
+
+  .scroller-fade-right {
+    background: linear-gradient(
+      270deg,
+      var(--scroller-fade) 0%,
+      color-mix(in oklab, var(--scroller-fade) 0%, transparent) 100%
+    );
+  }
+
+  @media (max-width: 767px) {
+    .scroller-track {
+      animation: none;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .scroller-track {
+      animation: none;
+    }
+
+    .scroller-track-duplicate {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroller-track {
+      animation: none;
+    }
+  }
+
+  @keyframes scroller-scroll {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+</style>

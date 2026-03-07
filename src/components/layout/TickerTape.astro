@@ -1,4 +1,6 @@
 ---
+import TickerRow from './TickerRow.astro';
+
 const labels = [
   'Tom Radford',
   'Tom Radford',
@@ -6,16 +8,14 @@ const labels = [
   'Tom Radford',
   'Tom Radford',
   'Tom Radford',
-]
+];
 ---
 
-<section aria-label="Site ticker tape" class="ticker-shell">
-  <div class="ticker-track">
-    <div class="ticker-group">
-      {labels.map((label) => <span class="ticker-item">{label}</span>)}
-    </div>
-    <div aria-hidden="true" class="ticker-group">
-      {labels.map((label) => <span class="ticker-item">{label}</span>)}
+<section aria-label="Site ticker tape" class="overflow-hidden border-y-[3px]">
+  <div class="flex w-max animate-ticker-scroll motion-reduce:animate-none">
+    <TickerRow labels={labels} />
+    <div aria-hidden="true">
+      <TickerRow labels={labels} />
     </div>
   </div>
 </section>

@@ -1,0 +1,18 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+
+import FOF from '../assets/404.png';
+---
+
+<Layout title="Not Found">
+  <div class="text-center flex flex-col justify-center mb-20">
+    <Image
+      alt="Page not found"
+      class="h-56 w-56 mx-auto rounded-2xl object-cover md:h-96"
+      src={FOF}
+    />
+    <h1 class="text-3xl leading-tight font-semibold text-foreground md:text-5xl">RUH ROH!</h1>
+    <p>404</p>
+  </div>
+</Layout>

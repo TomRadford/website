@@ -1,6 +1,10 @@
 @import 'tailwindcss';
 @custom-variant dark (&:where(.dark, .dark *));
 
+@view-transition {
+  navigation: auto;
+}
+
 @theme {
   --font-sans:
     'Geist Variable', 'Geist', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
@@ -17,8 +21,9 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-border: var(--border);
-  --color-ticker-text: var(--ticker-text);
+  --color-brand-text: var(--brand-text);
   --color-location-text: var(--location-text);
+  --animate-ticker-scroll: ticker-scroll 28s linear infinite;
 }
 
 :root {
@@ -27,8 +32,8 @@
   --body-copy: #334155;
   --muted-foreground: #64748b;
   --accent: #2563eb;
-  --border: #cbd5e1;
-  --ticker-text: #64748b;
+  --border: #64748b;
+  --brand-text: #262a30;
   --location-text: #8295ad;
   --page-glow-0: #dbeafecc;
   --page-glow-1: #bfdbfe99;
@@ -36,6 +41,11 @@
   --page-glow-3: #f8fafc00;
   --page-glow-4: #c4ddfc90;
   --scroller-fade: #f8fafc;
+
+  --mesh-gradient-color-1: #ffffff;
+  --mesh-gradient-color-2: #b0ddff;
+  --mesh-gradient-color-3: #e7f6fc;
+  --mesh-gradient-color-4: #ffffff;
 }
 
 .dark {
@@ -44,8 +54,8 @@
   --body-copy: #d1d5db;
   --muted-foreground: #94a3b8;
   --accent: #a5b4fc;
-  --border: #1f2430;
-  --ticker-text: #e2e8f0;
+  --border: #cecece;
+  --brand-text: #e2e8f0;
   --location-text: #a5b4fc;
   --page-glow-0: #3a568fcc;
   --page-glow-1: #1a274f88;
@@ -53,6 +63,11 @@
   --page-glow-3: #090b1000;
   --page-glow-4: #3a568fcc;
   --scroller-fade: #0a0c10;
+
+  --mesh-gradient-color-1: #000000;
+  --mesh-gradient-color-2: #090b10;
+  --mesh-gradient-color-3: #090b10;
+  --mesh-gradient-color-4: #172540;
 }
 
 *,
@@ -73,125 +88,8 @@ body {
   font-family: var(--font-sans);
 }
 
-.page-frame {
-  position: relative;
-  margin-inline: auto;
-  display: flex;
-  min-height: 100vh;
-  max-width: 72rem;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: 1.25rem 1rem 1.5rem;
-  overflow: hidden;
-}
-
-.page-frame::before {
-  position: absolute;
-  top: -35%;
-  right: -30%;
-  z-index: 0;
-  height: 90vh;
-  width: 80vw;
-  max-width: 72rem;
-  content: '';
-  pointer-events: none;
-  background: radial-gradient(
-    ellipse at center,
-    var(--page-glow-0) 0%,
-    var(--page-glow-1) 35%,
-    var(--page-glow-2) 72%,
-    var(--page-glow-4) 82%,
-    var(--page-glow-3) 100%
-  );
-}
-
-.page-frame > * {
-  position: relative;
-  z-index: 1;
-}
-
-.brand-rule {
-  height: 2px;
-  width: 100%;
-  background-color: var(--ticker-text);
-}
-
 .section-divider {
   border-top: 1px solid var(--border);
-}
-
-.ticker-shell {
-  overflow: hidden;
-  border-top: 3px solid var(--ticker-text);
-  border-bottom: 3px solid var(--ticker-text);
-}
-
-.ticker-track {
-  display: flex;
-  width: max-content;
-  animation: ticker-scroll 28s linear infinite;
-}
-
-.ticker-group {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding-inline: 1.5rem;
-}
-
-.ticker-item {
-  white-space: nowrap;
-  font-size: 1.375rem;
-  line-height: 1;
-  font-weight: 700;
-  color: var(--ticker-text);
-}
-
-.moments-wrap {
-  position: relative;
-}
-
-.moments-scroller {
-  overflow: hidden;
-}
-
-.moments-track {
-  display: flex;
-  width: max-content;
-  gap: 0.875rem;
-  animation: moments-scroll 45s linear infinite;
-}
-
-.moments-group {
-  display: flex;
-  gap: 0.875rem;
-}
-
-.moments-fade {
-  position: absolute;
-  top: 0;
-  z-index: 2;
-  height: 14rem;
-  width: 6rem;
-  pointer-events: none;
-}
-
-.moments-fade-left {
-  left: 0;
-  background: linear-gradient(
-    90deg,
-    var(--scroller-fade) 0%,
-    color-mix(in oklab, var(--scroller-fade) 0%, transparent) 100%
-  );
-}
-
-.moments-fade-right {
-  right: 0;
-  background: linear-gradient(
-    270deg,
-    var(--scroller-fade) 0%,
-    color-mix(in oklab, var(--scroller-fade) 0%, transparent) 100%
-  );
 }
 
 .prose-site {
@@ -218,61 +116,7 @@ body {
   text-underline-offset: 0.2em;
 }
 
-@media (min-width: 768px) {
-  .page-frame {
-    gap: 2rem;
-    padding: 1.5rem 2rem 2rem;
-  }
-
-  .ticker-item {
-    font-size: 1.875rem;
-  }
-}
-
-@media (max-width: 767px) {
-  .moments-scroller {
-    overflow-x: auto;
-    padding-bottom: 0.25rem;
-    scrollbar-width: none;
-    scroll-snap-type: x mandatory;
-  }
-
-  .moments-scroller::-webkit-scrollbar {
-    display: none;
-  }
-
-  .moments-track {
-    animation: none;
-    gap: 0.75rem;
-  }
-
-  .moments-group {
-    gap: 0.75rem;
-  }
-
-  .moments-fade {
-    display: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ticker-track,
-  .moments-track {
-    animation: none;
-  }
-}
-
 @keyframes ticker-scroll {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-@keyframes moments-scroll {
   from {
     transform: translate3d(0, 0, 0);
   }
