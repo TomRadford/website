@@ -19,5 +19,5 @@ const { alt, caption, decorative = false, src }: Props = Astro.props;
     loading="lazy"
     src={src}
   />
-  <p class="mt-2 text-xs text-muted-foreground">{caption}</p>
+  {caption && <p class="mt-2 text-xs text-muted-foreground">{caption}</p>}
 </article>

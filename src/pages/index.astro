@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
 import MomentCard from '../components/home/MomentCard.astro';
 import Carousel from '../components/bearnie/carousel/Carousel.astro';
 import CarouselContent from '../components/bearnie/carousel/CarouselContent.astro';
@@ -9,58 +10,11 @@ import CarouselPrevious from '../components/bearnie/carousel/CarouselPrevious.as
 import RootLayout from '../layouts/RootLayout.astro';
 import PageLayout from '../layouts/PageLayout.astro';
 
-import heroPortrait from '../assets/home/hero-portrait.png';
-import momentBts from '../assets/home/moment-bts.jpg';
-import momentBuilding from '../assets/home/moment-building.jpg';
-import momentCommunity from '../assets/home/moment-community.jpg';
-import momentCuriousEye from '../assets/home/moment-curious-eye.jpg';
-import momentDebugging from '../assets/home/moment-debugging.jpg';
-import momentExplainingIdeas from '../assets/home/moment-explaining-ideas.jpg';
-import momentOnSet from '../assets/home/moment-on-set.jpg';
-import momentSharing from '../assets/home/moment-sharing.jpg';
+import heroPortrait from '../assets/hero-portrait.png';
 
-const moments = [
-  {
-    alt: 'Explaining ideas in motion',
-    caption: 'Explaining ideas in motion.',
-    src: momentExplainingIdeas,
-  },
-  {
-    alt: 'On set solving creative problems',
-    caption: 'On set, solving creative problems.',
-    src: momentOnSet,
-  },
-  {
-    alt: 'Collaborative product debugging',
-    caption: 'Collaborative product debugging.',
-    src: momentDebugging,
-  },
-  {
-    alt: 'Exploring with a curious eye',
-    caption: 'Exploring with a curious eye.',
-    src: momentCuriousEye,
-  },
-  {
-    alt: 'Community and shared momentum',
-    caption: 'Community and shared momentum.',
-    src: momentCommunity,
-  },
-  {
-    alt: 'Sharing what I learn',
-    caption: 'Sharing what I learn.',
-    src: momentSharing,
-  },
-  {
-    alt: 'Behind the scenes filmmaking',
-    caption: 'Behind the scenes filmmaking.',
-    src: momentBts,
-  },
-  {
-    alt: 'Building with great people',
-    caption: 'Building with great people.',
-    src: momentBuilding,
-  },
-];
+const moments = (await getCollection('moments')).sort(
+  (left, right) => left.data.order - right.data.order
+);
 ---
 
 <RootLayout
@@ -174,7 +128,11 @@ const moments = [
             {
               moments.map((moment) => (
                 <CarouselItem class="w-72 flex-none max-md:w-60">
-                  <MomentCard alt={moment.alt} caption={moment.caption} src={moment.src} />
+                  <MomentCard
+                    alt={moment.data.alt}
+                    caption={moment.data.caption}
+                    src={moment.data.image}
+                  />
                 </CarouselItem>
               ))
             }
