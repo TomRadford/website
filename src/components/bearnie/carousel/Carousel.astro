@@ -65,14 +65,12 @@ const classes = cn('relative', className);
       const perView = isAutoView ? 'auto' : parseInt(slidesPerView || '1');
 
       if (isAutoView) {
-        content
-          .querySelectorAll('[data-carousel-item]')
-          .forEach((item) => {
-            const slide = item as HTMLElement;
-            slide.style.flex = '0 0 auto';
-            slide.style.minWidth = 'max-content';
-            slide.style.maxWidth = 'max-content';
-          });
+        content.querySelectorAll('[data-carousel-item]').forEach((item) => {
+          const slide = item as HTMLElement;
+          slide.style.flex = '0 0 auto';
+          slide.style.minWidth = 'max-content';
+          slide.style.maxWidth = 'max-content';
+        });
       }
 
       let autoplayInterval: ReturnType<typeof setInterval> | null = null;
@@ -135,7 +133,7 @@ const classes = cn('relative', className);
       function updateArrows(s: typeof slider) {
         const prevBtn = carousel.querySelector('[data-carousel-prev]');
         const nextBtn = carousel.querySelector('[data-carousel-next]');
-        
+
         if (!loop) {
           if (prevBtn) {
             if (s.track.details.rel === 0) {

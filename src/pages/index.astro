@@ -1,21 +1,23 @@
 ---
-import { Image } from 'astro:assets'
-import MomentCard from '../components/home/MomentCard.astro'
-import Carousel from '../components/bearnie/carousel/Carousel.astro'
-import CarouselContent from '../components/bearnie/carousel/CarouselContent.astro'
-import CarouselItem from '../components/bearnie/carousel/CarouselItem.astro'
-import RootLayout from '../layouts/RootLayout.astro'
-import PageLayout from '../layouts/PageLayout.astro'
+import { Image } from 'astro:assets';
+import MomentCard from '../components/home/MomentCard.astro';
+import Carousel from '../components/bearnie/carousel/Carousel.astro';
+import CarouselContent from '../components/bearnie/carousel/CarouselContent.astro';
+import CarouselItem from '../components/bearnie/carousel/CarouselItem.astro';
+import CarouselNext from '../components/bearnie/carousel/CarouselNext.astro';
+import CarouselPrevious from '../components/bearnie/carousel/CarouselPrevious.astro';
+import RootLayout from '../layouts/RootLayout.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 
-import heroPortrait from '../assets/home/hero-portrait.png'
-import momentBts from '../assets/home/moment-bts.jpg'
-import momentBuilding from '../assets/home/moment-building.jpg'
-import momentCommunity from '../assets/home/moment-community.jpg'
-import momentCuriousEye from '../assets/home/moment-curious-eye.jpg'
-import momentDebugging from '../assets/home/moment-debugging.jpg'
-import momentExplainingIdeas from '../assets/home/moment-explaining-ideas.jpg'
-import momentOnSet from '../assets/home/moment-on-set.jpg'
-import momentSharing from '../assets/home/moment-sharing.jpg'
+import heroPortrait from '../assets/home/hero-portrait.png';
+import momentBts from '../assets/home/moment-bts.jpg';
+import momentBuilding from '../assets/home/moment-building.jpg';
+import momentCommunity from '../assets/home/moment-community.jpg';
+import momentCuriousEye from '../assets/home/moment-curious-eye.jpg';
+import momentDebugging from '../assets/home/moment-debugging.jpg';
+import momentExplainingIdeas from '../assets/home/moment-explaining-ideas.jpg';
+import momentOnSet from '../assets/home/moment-on-set.jpg';
+import momentSharing from '../assets/home/moment-sharing.jpg';
 
 const moments = [
   {
@@ -58,7 +60,7 @@ const moments = [
     caption: 'Building with great people.',
     src: momentBuilding,
   },
-]
+];
 ---
 
 <RootLayout
@@ -162,21 +164,23 @@ const moments = [
       </p>
     </section>
 
-    <section class="space-y-3" id="moments">
+    <section class="space-y-3 mb-8" id="moments">
       <h2 class="text-lg font-semibold text-foreground md:text-2xl">Me in action</h2>
-      <Carousel class="overflow-visible" slidesPerView="auto" spacing={14} autoplay={false}>
-        <CarouselContent>
-          {
-            moments.map((moment) => (
-              <CarouselItem class="w-72 flex-none max-md:w-60">
-                <MomentCard alt={moment.alt} caption={moment.caption} src={moment.src} />
-              </CarouselItem>
-            ))
-          }
-        </CarouselContent>
-      </Carousel>
-
-      <p class="text-xs text-muted-foreground md:hidden">Swipe strip on mobile →</p>
+      <div class="relative">
+        <Carousel class="overflow-visible" slidesPerView="auto" spacing={14} autoplay={false}>
+          <CarouselPrevious />
+          <CarouselNext />
+          <CarouselContent>
+            {
+              moments.map((moment) => (
+                <CarouselItem class="w-72 flex-none max-md:w-60">
+                  <MomentCard alt={moment.alt} caption={moment.caption} src={moment.src} />
+                </CarouselItem>
+              ))
+            }
+          </CarouselContent>
+        </Carousel>
+      </div>
     </section>
   </PageLayout>
 </RootLayout>

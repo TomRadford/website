@@ -9,18 +9,17 @@ const { class: className, ...props } = Astro.props;
 
 const classes = cn(
   'absolute left-2 top-1/2 -translate-y-1/2 z-10',
-  'inline-flex size-8 items-center justify-center rounded-full',
-  'bg-background/80 backdrop-blur-sm border shadow-sm',
-  'hover:bg-accent hover:text-accent-foreground',
-  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-  'disabled:pointer-events-none disabled:opacity-50',
-  'transition-colors',
+  'inline-flex size-8 items-center justify-center',
+  'bg-transparent text-white border-0 shadow-none',
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80',
+  'disabled:pointer-events-none disabled:opacity-0 disabled:scale-95',
+  'transition-all duration-200',
   className
 );
 ---
 
 <button type="button" class={classes} data-carousel-prev aria-label="Previous slide" {...props}>
   <slot>
-    <ChevronLeft class="size-4" />
+    <ChevronLeft class="size-5 text-white" />
   </slot>
 </button>
