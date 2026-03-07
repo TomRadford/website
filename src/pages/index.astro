@@ -9,6 +9,7 @@ import CarouselNext from '../components/bearnie/carousel/CarouselNext.astro';
 import CarouselPrevious from '../components/bearnie/carousel/CarouselPrevious.astro';
 import RootLayout from '../layouts/RootLayout.astro';
 import PageLayout from '../layouts/PageLayout.astro';
+import Link from '../components/ui/Link.astro';
 
 import heroPortrait from '../assets/hero-portrait.png';
 
@@ -56,18 +57,12 @@ const skills = [
           }
         </p>
         <div class="flex gap-5">
-          <a
-            class="text-sm font-medium text-body-copy transition-colors hover:text-accent md:text-base"
-            href="#projects"
-          >
+          <Link href="#projects">
             Projects →
-          </a>
-          <a
-            class="text-sm font-medium text-accent transition-opacity hover:opacity-80 md:text-base"
-            href="#writing"
-          >
+          </Link>
+          <Link href="#writing" variant="accent">
             Writing →
-          </a>
+          </Link>
         </div>
       </div>
 
