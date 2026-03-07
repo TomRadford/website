@@ -7,7 +7,6 @@ const moments = defineCollection({
   schema: ({ image }) =>
     z.object({
       id: z.string(),
-      alt: z.string(),
       caption: z.string(),
       image: image(),
     }),

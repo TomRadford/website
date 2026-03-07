@@ -1,84 +1,66 @@
 [
   {
     "id": "11",
-    "alt": "",
     "caption": "Cooking up some yummy JavaScript!",
     "image": "../../assets/moments/11.jpg"
   },
-
   {
     "id": "8",
-    "alt": "",
     "caption": "Having fun at meetups!",
     "image": "../../assets/moments/8.jpg"
   },
   {
     "id": "2",
-    "alt": "",
     "caption": "Explaining web dev stuff!",
     "image": "../../assets/moments/2.jpg"
   },
-
   {
     "id": "5",
-    "alt": "",
     "caption": "MCing at a meetup!",
     "image": "../../assets/moments/5.jpg"
   },
-
   {
     "id": "8",
-    "alt": "",
     "caption": "Having fun!",
     "image": "../../assets/moments/8.jpg"
   },
   {
     "id": "3",
-    "alt": "",
     "caption": "Hyping up a career in tech!",
     "image": "../../assets/moments/3.jpg"
   },
   {
     "id": "13",
-    "alt": "",
     "caption": "Hangin with the homies",
     "image": "../../assets/moments/13.jpg"
   },
   {
     "id": "1",
-    "alt": "",
     "caption": "Creative engineering",
     "image": "../../assets/moments/1.jpg"
   },
   {
     "id": "9",
-    "alt": "",
     "caption": "Cooking with awesome colleagues",
     "image": "../../assets/moments/9.jpeg"
   },
   {
     "id": "4",
-    "alt": "",
     "caption": "Chuffed with my work",
     "image": "../../assets/moments/4.jpg"
   },
   {
     "id": "10",
-    "alt": "",
     "caption": "Meme-ing it up at work",
     "image": "../../assets/moments/10.jpg"
   },
-
   {
     "id": "12",
-    "alt": "",
     "caption": "Shenanigans on set!",
     "image": "../../assets/moments/12.jpg"
   },
-
   {
     "id": "6",
-    "alt": "",
     "caption": "Playing with cameras!",
     "image": "../../assets/moments/6.jpg"
   }

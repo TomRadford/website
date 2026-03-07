@@ -126,11 +126,7 @@ const moments = await getCollection('moments');
             {
               moments.map((moment) => (
                 <CarouselItem class="w-72 flex-none max-md:w-60">
-                  <MomentCard
-                    alt={moment.data.alt}
-                    caption={moment.data.caption}
-                    src={moment.data.image}
-                  />
+                  <MomentCard caption={moment.data.caption} src={moment.data.image} />
                 </CarouselItem>
               ))
             }
