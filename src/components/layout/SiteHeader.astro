@@ -1,5 +1,5 @@
 ---
-import Logo from './Logo.astro'
+import Logo from './Logo.astro';
 ---
 
 <header class="w-full" id="top">
@@ -68,23 +68,23 @@ import Logo from './Logo.astro'
 </header>
 
 <script>
-  const trigger = document.querySelector('[data-mobile-menu-trigger]')
-  const panel = document.querySelector('#mobile-nav-panel')
+  const trigger = document.querySelector('[data-mobile-menu-trigger]');
+  const panel = document.querySelector('#mobile-nav-panel');
 
   if (trigger instanceof HTMLButtonElement && panel instanceof HTMLDivElement) {
     const closeMenu = () => {
-      panel.classList.add('hidden')
-      trigger.setAttribute('aria-expanded', 'false')
-    }
+      panel.classList.add('hidden');
+      trigger.setAttribute('aria-expanded', 'false');
+    };
 
     trigger.addEventListener('click', () => {
-      const expanded = trigger.getAttribute('aria-expanded') === 'true'
-      trigger.setAttribute('aria-expanded', String(!expanded))
-      panel.classList.toggle('hidden', expanded)
-    })
+      const expanded = trigger.getAttribute('aria-expanded') === 'true';
+      trigger.setAttribute('aria-expanded', String(!expanded));
+      panel.classList.toggle('hidden', expanded);
+    });
 
     panel.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', closeMenu)
-    })
+      link.addEventListener('click', closeMenu);
+    });
   }
 </script>

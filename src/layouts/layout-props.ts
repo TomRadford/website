@@ -1,5 +1,5 @@
 export interface SEOProps {
-  title?: string
-  description?: string
-  titleSuffix?: string
+  title?: string;
+  description?: string;
+  titleSuffix?: string;
 }

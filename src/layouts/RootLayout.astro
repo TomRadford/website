@@ -1,20 +1,20 @@
 ---
-import '@fontsource-variable/geist'
-import '@fontsource-variable/geist-mono'
-import '../styles/global.css'
-import type { SEOProps } from './layout-props'
+import '@fontsource-variable/geist';
+import '@fontsource-variable/geist-mono';
+import '../styles/global.css';
+import type { SEOProps } from './layout-props';
 
 const {
   title = '',
   description = 'Creative engineer shaping meaningful products through technical depth and strong vision.',
   titleSuffix = 'Tom Radford',
-}: SEOProps = Astro.props
+}: SEOProps = Astro.props;
 
 const finalTitle = title
   ? title.includes(' | ')
     ? title
     : `${title} | ${titleSuffix}`
-  : titleSuffix
+  : titleSuffix;
 ---
 
 <html class="h-full" lang="en">
@@ -26,17 +26,17 @@ const finalTitle = title
     <meta name="generator" content={Astro.generator} />
     <title>{finalTitle}</title>
     <script is:inline>
-      ;(() => {
+      (() => {
         try {
-          const storageKey = 'theme-preference'
-          const storedTheme = localStorage.getItem(storageKey)
-          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-          const shouldUseDark = storedTheme ? storedTheme === 'dark' : prefersDark
-          document.documentElement.classList.toggle('dark', shouldUseDark)
+          const storageKey = 'theme-preference';
+          const storedTheme = localStorage.getItem(storageKey);
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const shouldUseDark = storedTheme ? storedTheme === 'dark' : prefersDark;
+          document.documentElement.classList.toggle('dark', shouldUseDark);
         } catch {
-          document.documentElement.classList.remove('dark')
+          document.documentElement.classList.remove('dark');
         }
-      })()
+      })();
     </script>
   </head>
   <body class="min-h-full bg-background text-foreground">

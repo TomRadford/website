@@ -1,14 +1,14 @@
 ---
-import { cn } from '../../../utils/cn'
-import type { HTMLAttributes } from 'astro/types'
+import { cn } from '../../../utils/cn';
+import type { HTMLAttributes } from 'astro/types';
 
 export interface Props extends HTMLAttributes<'div'> {
-  count: number
+  count: number;
 }
 
-const { count, class: className, ...props } = Astro.props
+const { count, class: className, ...props } = Astro.props;
 
-const classes = cn('flex items-center justify-center gap-1.5 mt-4', className)
+const classes = cn('flex items-center justify-center gap-1.5 mt-4', className);
 ---
 
 <div class={classes} data-carousel-dots {...props}>

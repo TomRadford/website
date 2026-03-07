@@ -1,7 +1,7 @@
 ---
-import SiteFooter from '../components/layout/SiteFooter.astro'
-import SiteHeader from '../components/layout/SiteHeader.astro'
-import TickerTape from '../components/layout/TickerTape.astro'
+import SiteFooter from '../components/layout/SiteFooter.astro';
+import SiteHeader from '../components/layout/SiteHeader.astro';
+import TickerTape from '../components/layout/TickerTape.astro';
 ---
 
 <div class="page-frame">
@@ -20,46 +20,46 @@ import TickerTape from '../components/layout/TickerTape.astro'
 </div>
 
 <script>
-  const storageKey = 'theme-preference'
-  const root = document.documentElement
-  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-  const toggleButtons = document.querySelectorAll('[data-theme-toggle]')
+  const storageKey = 'theme-preference';
+  const root = document.documentElement;
+  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  const toggleButtons = document.querySelectorAll('[data-theme-toggle]');
 
   const syncToggleState = () => {
-    const isDark = root.classList.contains('dark')
+    const isDark = root.classList.contains('dark');
     toggleButtons.forEach((button) => {
-      button.setAttribute('aria-pressed', String(isDark))
-    })
-  }
+      button.setAttribute('aria-pressed', String(isDark));
+    });
+  };
 
   const resolveTheme = () => {
-    const storedTheme = localStorage.getItem(storageKey)
+    const storedTheme = localStorage.getItem(storageKey);
     if (storedTheme === 'light' || storedTheme === 'dark') {
-      return storedTheme
+      return storedTheme;
     }
-    return mediaQuery.matches ? 'dark' : 'light'
-  }
+    return mediaQuery.matches ? 'dark' : 'light';
+  };
 
   const applyTheme = (theme: 'light' | 'dark', persist = false) => {
-    root.classList.toggle('dark', theme === 'dark')
+    root.classList.toggle('dark', theme === 'dark');
     if (persist) {
-      localStorage.setItem(storageKey, theme)
+      localStorage.setItem(storageKey, theme);
     }
-    syncToggleState()
-  }
+    syncToggleState();
+  };
 
-  applyTheme(resolveTheme())
+  applyTheme(resolveTheme());
 
   toggleButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      const nextTheme = root.classList.contains('dark') ? 'light' : 'dark'
-      applyTheme(nextTheme, true)
-    })
-  })
+      const nextTheme = root.classList.contains('dark') ? 'light' : 'dark';
+      applyTheme(nextTheme, true);
+    });
+  });
 
   mediaQuery.addEventListener('change', (event) => {
-    const hasStoredPreference = localStorage.getItem(storageKey)
-    if (hasStoredPreference) return
-    applyTheme(event.matches ? 'dark' : 'light')
-  })
+    const hasStoredPreference = localStorage.getItem(storageKey);
+    if (hasStoredPreference) return;
+    applyTheme(event.matches ? 'dark' : 'light');
+  });
 </script>

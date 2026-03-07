@@ -1,9 +1,9 @@
 ---
 interface Props {
-  class?: string
+  class?: string;
 }
 
-const { class: className = '' }: Props = Astro.props
+const { class: className = '' }: Props = Astro.props;
 ---
 
 <div class:list={['prose-site', className]}>

@@ -1,9 +1,9 @@
 ---
-import RootLayout from './RootLayout.astro'
-import PageLayout from './PageLayout.astro'
-import type { SEOProps } from './layout-props'
+import RootLayout from './RootLayout.astro';
+import PageLayout from './PageLayout.astro';
+import type { SEOProps } from './layout-props';
 
-const { title, description, titleSuffix }: SEOProps = Astro.props
+const { title, description, titleSuffix }: SEOProps = Astro.props;
 ---
 
 <RootLayout title={title} description={description} titleSuffix={titleSuffix}>

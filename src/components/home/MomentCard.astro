@@ -1,15 +1,15 @@
 ---
-import { Image } from 'astro:assets'
-import type { ImageMetadata } from 'astro'
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 
 interface Props {
-  alt: string
-  caption: string
-  decorative?: boolean
-  src: ImageMetadata
+  alt: string;
+  caption: string;
+  decorative?: boolean;
+  src: ImageMetadata;
 }
 
-const { alt, caption, decorative = false, src }: Props = Astro.props
+const { alt, caption, decorative = false, src }: Props = Astro.props;
 ---
 
 <article class="w-72 flex-none max-md:w-60 max-md:snap-start">

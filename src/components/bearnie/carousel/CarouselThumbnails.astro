@@ -6,10 +6,7 @@ export interface Props extends HTMLAttributes<'div'> {}
 
 const { class: className, ...props } = Astro.props;
 
-const classes = cn(
-  'flex items-center justify-center gap-2 mt-4',
-  className
-);
+const classes = cn('flex items-center justify-center gap-2 mt-4', className);
 ---
 
 <div class={classes} data-carousel-thumbnails {...props}>
@@ -26,7 +23,7 @@ const classes = cn(
       if (!carousel) return;
 
       const thumbnails = container.querySelectorAll('[data-carousel-thumbnail]');
-      
+
       thumbnails.forEach((thumb, index) => {
         thumb.addEventListener('click', () => {
           const slider = (carousel as any).__keenSlider;
