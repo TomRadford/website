@@ -19,6 +19,7 @@
   --color-border: var(--border);
   --color-brand-text: var(--brand-text);
   --color-location-text: var(--location-text);
+  --animate-ticker-scroll: ticker-scroll 28s linear infinite;
 }
 
 :root {
@@ -27,8 +28,8 @@
   --body-copy: #334155;
   --muted-foreground: #64748b;
   --accent: #2563eb;
-  --border: #cbd5e1;
-  --brand-text: #64748b;
+  --border: #64748b;
+  --brand-text: #444f5f;
   --location-text: #8295ad;
   --page-glow-0: #dbeafecc;
   --page-glow-1: #bfdbfe99;
@@ -44,7 +45,7 @@
   --body-copy: #d1d5db;
   --muted-foreground: #94a3b8;
   --accent: #a5b4fc;
-  --border: #1f2430;
+  --border: #cecece;
   --brand-text: #e2e8f0;
   --location-text: #a5b4fc;
   --page-glow-0: #3a568fcc;
@@ -114,25 +115,6 @@ body {
   border-top: 1px solid var(--border);
 }
 
-.ticker-shell {
-  overflow: hidden;
-  border-top: 3px solid var(--brand-text);
-  border-bottom: 3px solid var(--brand-text);
-}
-
-.ticker-track {
-  display: flex;
-  width: max-content;
-  animation: ticker-scroll 28s linear infinite;
-}
-
-.ticker-group {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding-inline: 1.5rem;
-}
-
 .prose-site {
   max-width: 70ch;
   line-height: 1.7;
@@ -161,13 +143,6 @@ body {
   .page-frame {
     gap: 2rem;
     padding: 1.5rem 2rem 2rem;
-  }
-
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ticker-track {
-    animation: none;
   }
 }
 
