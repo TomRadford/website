@@ -17,7 +17,7 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-border: var(--border);
-  --color-ticker-text: var(--ticker-text);
+  --color-brand-text: var(--brand-text);
   --color-location-text: var(--location-text);
 }
 
@@ -28,7 +28,7 @@
   --muted-foreground: #64748b;
   --accent: #2563eb;
   --border: #cbd5e1;
-  --ticker-text: #64748b;
+  --brand-text: #64748b;
   --location-text: #8295ad;
   --page-glow-0: #dbeafecc;
   --page-glow-1: #bfdbfe99;
@@ -45,7 +45,7 @@
   --muted-foreground: #94a3b8;
   --accent: #a5b4fc;
   --border: #1f2430;
-  --ticker-text: #e2e8f0;
+  --brand-text: #e2e8f0;
   --location-text: #a5b4fc;
   --page-glow-0: #3a568fcc;
   --page-glow-1: #1a274f88;
@@ -110,20 +110,14 @@ body {
   z-index: 1;
 }
 
-.brand-rule {
-  height: 2px;
-  width: 100%;
-  background-color: var(--ticker-text);
-}
-
 .section-divider {
   border-top: 1px solid var(--border);
 }
 
 .ticker-shell {
   overflow: hidden;
-  border-top: 3px solid var(--ticker-text);
-  border-bottom: 3px solid var(--ticker-text);
+  border-top: 3px solid var(--brand-text);
+  border-bottom: 3px solid var(--brand-text);
 }
 
 .ticker-track {
@@ -137,14 +131,6 @@ body {
   align-items: center;
   gap: 1.5rem;
   padding-inline: 1.5rem;
-}
-
-.ticker-item {
-  white-space: nowrap;
-  font-size: 1.375rem;
-  line-height: 1;
-  font-weight: 700;
-  color: var(--ticker-text);
 }
 
 .prose-site {
@@ -177,9 +163,6 @@ body {
     padding: 1.5rem 2rem 2rem;
   }
 
-  .ticker-item {
-    font-size: 1.875rem;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
