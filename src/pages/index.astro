@@ -13,6 +13,20 @@ import PageLayout from '../layouts/PageLayout.astro';
 import heroPortrait from '../assets/hero-portrait.png';
 
 const moments = await getCollection('moments');
+const skills = [
+  'Web dev',
+  'Runner',
+  'React user',
+  'Mountain explorer',
+  'Javascript fiend',
+  'Wave-rider',
+  'Folktronica & house lover',
+  'Mentor',
+  'Cloudflarer',
+  'Mentee',
+  'Camera-person',
+  'DnB enjoyer',
+];
 ---
 
 <RootLayout
@@ -31,8 +45,14 @@ const moments = await getCollection('moments');
           useful solutions while maintaining a passion for collaboration and ingenuity.
         </p>
         <p class="font-mono text-xs leading-relaxed text-muted-foreground md:text-sm">
-          React · Cinematography · Vue · Svelte · Next.js · Cloudflare · Hono · Drizzle · Agentic
-          workflows
+          {
+            skills.map((skill, index) => (
+              <>
+                {index > 0 && ' · '}
+                {skill}
+              </>
+            ))
+          }
         </p>
         <div class="flex gap-5">
           <a
