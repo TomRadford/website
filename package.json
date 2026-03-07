@@ -18,15 +18,15 @@
   "devDependencies": {
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
-    "wrangler": "^4.69.0"
+ 		"wrangler": "^4.71.0"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "https://pkg.pr.new/@astrojs/cloudflare@15694",
+    "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/mdx": "^4.3.13",
     "@fontsource-variable/geist": "^5.2.8",
     "@fontsource-variable/geist-mono": "^5.2.7",
     "@tailwindcss/vite": "^4.2.1",
-    "astro": "https://pkg.pr.new/astro@15694",
+ 		"astro": "^5.17.1",
     "clsx": "^2.1.1",
     "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.2.1",
