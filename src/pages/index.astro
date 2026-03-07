@@ -2,7 +2,8 @@
 import { Image } from 'astro:assets'
 import MomentCard from '../components/home/MomentCard.astro'
 import Scroller from '../components/ui/Scroller.astro'
-import Layout from '../layouts/Layout.astro'
+import RootLayout from '../layouts/RootLayout.astro'
+import PageLayout from '../layouts/PageLayout.astro'
 
 import heroPortrait from '../assets/home/hero-portrait.png'
 import momentBts from '../assets/home/moment-bts.jpg'
@@ -58,11 +59,12 @@ const moments = [
 ]
 ---
 
-<Layout
+<RootLayout
   description="Creative engineer shaping meaningful products through technical depth and strong vision."
-  title="Tom Radford | Creative Engineer"
+  title="Creative Engineer"
 >
-  <section class="grid gap-8 md:grid-cols-5 md:gap-14" id="about">
+  <PageLayout>
+    <section class="grid gap-8 md:grid-cols-5 md:gap-14" id="about">
     <div class="flex flex-col gap-5 md:gap-6 md:col-span-3">
       <h1 class="text-3xl leading-tight font-semibold text-foreground md:text-5xl">
         Creative engineer shaping meaningful products through technical depth and strong vision.
@@ -158,16 +160,17 @@ const moments = [
     </p>
   </section>
 
-  <section class="space-y-3" id="moments">
-    <h2 class="text-lg font-semibold text-foreground md:text-2xl">Recent moments</h2>
-    <Scroller>
-      {
-        moments.map((moment) => (
-          <MomentCard alt={moment.alt} caption={moment.caption} src={moment.src} />
-        ))
-      }
-    </Scroller>
+    <section class="space-y-3" id="moments">
+      <h2 class="text-lg font-semibold text-foreground md:text-2xl">Recent moments</h2>
+      <Scroller>
+        {
+          moments.map((moment) => (
+            <MomentCard alt={moment.alt} caption={moment.caption} src={moment.src} />
+          ))
+        }
+      </Scroller>
 
-    <p class="text-xs text-muted-foreground md:hidden">Swipe strip on mobile →</p>
-  </section>
-</Layout>
+      <p class="text-xs text-muted-foreground md:hidden">Swipe strip on mobile →</p>
+    </section>
+  </PageLayout>
+</RootLayout>
