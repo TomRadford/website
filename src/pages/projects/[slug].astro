@@ -6,6 +6,7 @@ import ProseLink from '../../components/content/ProseLink.astro';
 import Prose from '../../components/Prose.astro';
 import RootLayout from '../../layouts/RootLayout.astro';
 import PageLayout from '../../layouts/PageLayout.astro';
+import { getProjectOgImagePath } from '../../utils/open-graph';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -18,9 +19,31 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
+const ogImage = getProjectOgImagePath(project.id);
+const projectSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: project.data.title,
+  description: project.data.description,
+  creator: {
+    '@type': 'Person',
+    name: 'Tom Radford',
+    url: 'https://theradford.com',
+  },
+  image: [new URL(ogImage, Astro.site ?? Astro.url).toString()],
+  keywords: project.data.tags,
+  url: new URL(Astro.url.pathname, Astro.site ?? Astro.url).toString(),
+};
 ---
 
-<RootLayout description={project.data.description} title={project.data.title}>
+<RootLayout
+  description={project.data.description}
+  jsonLd={projectSchema}
+  ogImage={ogImage}
+  tags={project.data.tags}
+  title={project.data.title}
+  type="article"
+>
   <PageLayout>
     <article class="mx-auto flex w-full max-w-3xl flex-col gap-2 md:gap-4">
       <ContentPageHeader

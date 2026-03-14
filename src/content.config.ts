@@ -27,6 +27,7 @@ const projects = defineCollection({
       .default([]),
     description: z.string(),
     tags: z.array(z.string()).default([]),
+    socialImage: z.string().optional(),
   }),
 });
 
@@ -37,6 +38,7 @@ const writing = defineCollection({
     description: z.string(),
     publishedAt: z.coerce.date(),
     tags: z.array(z.string()).default([]),
+    socialImage: z.string().optional(),
   }),
 });
 

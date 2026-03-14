@@ -6,6 +6,7 @@ import ProseLink from '../components/content/ProseLink.astro';
 import Prose from '../components/Prose.astro';
 import RootLayout from '../layouts/RootLayout.astro';
 import PageLayout from '../layouts/PageLayout.astro';
+import { getWritingOgImagePath } from '../utils/open-graph';
 
 export async function getStaticPaths() {
   const writing = await getCollection('writing');
@@ -18,9 +19,33 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+const ogImage = getWritingOgImagePath(post.id);
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.publishedAt.toISOString(),
+  author: {
+    '@type': 'Person',
+    name: 'Tom Radford',
+    url: 'https://theradford.com',
+  },
+  image: [new URL(ogImage, Astro.site ?? Astro.url).toString()],
+  keywords: post.data.tags,
+  mainEntityOfPage: new URL(Astro.url.pathname, Astro.site ?? Astro.url).toString(),
+};
 ---
 
-<RootLayout description={post.data.description} title={post.data.title}>
+<RootLayout
+  description={post.data.description}
+  jsonLd={articleSchema}
+  ogImage={ogImage}
+  publishedTime={post.data.publishedAt.toISOString()}
+  tags={post.data.tags}
+  title={post.data.title}
+  type="article"
+>
   <PageLayout>
     <article class="mx-auto flex w-full max-w-3xl flex-col gap-2 md:gap-4">
       <ContentPageHeader

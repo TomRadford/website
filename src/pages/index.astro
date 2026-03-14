@@ -10,6 +10,7 @@ import CarouselPrevious from '../components/bearnie/carousel/CarouselPrevious.as
 import RootLayout from '../layouts/RootLayout.astro';
 import PageLayout from '../layouts/PageLayout.astro';
 import Link from '../components/ui/Link.astro';
+import { DEFAULT_OG_IMAGE } from '../utils/open-graph';
 
 import heroPortrait from '../assets/hero-portrait.png';
 
@@ -39,6 +40,7 @@ const skills = [
 
 <RootLayout
   description="Creative engineer shaping meaningful products through technical depth and strong vision."
+  ogImage={DEFAULT_OG_IMAGE}
   title="Creative Engineer"
 >
   <PageLayout>

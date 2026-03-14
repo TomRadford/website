@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import ListPage from '../../components/content/ListPage.astro';
 import RootLayout from '../../layouts/RootLayout.astro';
 import PageLayout from '../../layouts/PageLayout.astro';
+import { WRITING_INDEX_OG_IMAGE } from '../../utils/open-graph';
 
 const writing = (await getCollection('writing')).sort(
   (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
@@ -19,6 +20,7 @@ const items = writing.map((post) => ({
 
 <RootLayout
   description="Writing on building products, systems, and useful software."
+  ogImage={WRITING_INDEX_OG_IMAGE}
   title="Writing"
 >
   <PageLayout>
