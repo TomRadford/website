@@ -106,6 +106,34 @@ body {
   margin-block: 1em;
 }
 
+.prose-site :where(ul, ol) {
+  padding-left: 1.5rem;
+}
+
+.prose-site ul {
+  list-style: disc;
+}
+
+.prose-site ol {
+  list-style: decimal;
+}
+
+.prose-site li {
+  margin-block: 0.35em;
+}
+
+.prose-site li::marker {
+  color: var(--muted-foreground);
+}
+
+.prose-site li > :first-child {
+  margin-top: 0;
+}
+
+.prose-site li > :last-child {
+  margin-bottom: 0;
+}
+
 .prose-site a:not([data-prose-media-link]) {
   color: var(--accent);
   text-decoration: underline;
