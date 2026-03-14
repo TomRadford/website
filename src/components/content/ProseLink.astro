@@ -10,10 +10,11 @@ const isMediaLink =
 
 <a
   class:list={[
-    !isMediaLink && 'text-accent underline decoration-current hover:opacity-80',
+    !isMediaLink && 'text-accent underline decoration-current hover:opacity-90',
     isMediaLink && 'not-prose block no-underline ',
     className,
   ]}
+  target="_blank"
   data-prose-media-link={isMediaLink ? 'true' : undefined}
   href={href}
   {...attrs}
