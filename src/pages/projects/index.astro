@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import ListPage from '../../components/content/ListPage.astro';
+import RootLayout from '../../layouts/RootLayout.astro';
+import PageLayout from '../../layouts/PageLayout.astro';
+import { PROJECTS_INDEX_OG_IMAGE } from '../../utils/open-graph';
+
+const projects = (await getCollection('projects')).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title)
+);
+
+const items = projects.map((project) => ({
+  href: `/projects/${project.id}`,
+  title: project.data.title,
+  excerpt: project.data.tagline,
+  tags: project.data.tags,
+}));
+---
+
+<RootLayout
+  description="A collection of projects spanning software, tools, and experiments."
+  ogImage={PROJECTS_INDEX_OG_IMAGE}
+  title="Projects"
+>
+  <PageLayout>
+    <ListPage
+      entityType="projects"
+      items={items}
+      subtitle="meaningful products that I've been shipping"
+      title="problems I've solved."
+    />
+  </PageLayout>
+</RootLayout>

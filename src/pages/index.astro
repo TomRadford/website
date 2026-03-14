@@ -10,10 +10,17 @@ import CarouselPrevious from '../components/bearnie/carousel/CarouselPrevious.as
 import RootLayout from '../layouts/RootLayout.astro';
 import PageLayout from '../layouts/PageLayout.astro';
 import Link from '../components/ui/Link.astro';
+import { DEFAULT_OG_IMAGE } from '../utils/open-graph';
 
 import heroPortrait from '../assets/hero-portrait.png';
 
 const moments = await getCollection('moments');
+const projects = (await getCollection('projects')).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title)
+);
+const writing = (await getCollection('writing')).sort(
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
+);
 const skills = [
   'Web dev',
   'Runner',
@@ -33,6 +40,7 @@ const skills = [
 
 <RootLayout
   description="Creative engineer shaping meaningful products through technical depth and strong vision."
+  ogImage={DEFAULT_OG_IMAGE}
   title="Creative Engineer"
 >
   <PageLayout>
@@ -57,8 +65,8 @@ const skills = [
           }
         </p>
         <div class="flex gap-5">
-          <Link href="#projects"> Projects → </Link>
-          <Link href="#writing" variant="accent"> Writing → </Link>
+          <Link href="/projects"> Projects → </Link>
+          <Link href="/writing" variant="accent"> Writing → </Link>
         </div>
       </div>
 
@@ -67,6 +75,7 @@ const skills = [
           alt="Tom Radford portrait"
           class="h-96 w-full rounded-2xl object-cover md:h-96"
           src={heroPortrait}
+          loading="eager"
         />
         <p class="text-center text-xs text-muted-foreground">Me, stoked on building cool shit.</p>
       </div>
@@ -74,58 +83,34 @@ const skills = [
 
     <section class="space-y-3" id="projects">
       <h2 class="text-xl font-semibold text-foreground md:text-2xl">Sick projects</h2>
-      <p>
-        <a
-          class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
-          href="#"
-        >
-          Simple train time updates and delays for the trains in Cape Town →
-        </a>
-      </p>
-      <p>
-        <a
-          class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
-          href="#"
-        >
-          Gear list collaboration app with Shootdrop.com →
-        </a>
-      </p>
-      <p>
-        <a
-          class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
-          href="#"
-        >
-          Colour-grading Transmission →
-        </a>
-      </p>
+      {
+        projects.slice(0, 3).map((project) => (
+          <p>
+            <a
+              class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
+              href={`/projects/${project.id}`}
+            >
+              {project.data.tagline} →
+            </a>
+          </p>
+        ))
+      }
     </section>
 
     <section class="space-y-3" id="writing">
       <h2 class="text-xl font-semibold text-foreground md:text-2xl">Latest writing</h2>
-      <p>
-        <a
-          class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
-          href="#"
-        >
-          building a web-component with vue →
-        </a>
-      </p>
-      <p>
-        <a
-          class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
-          href="#"
-        >
-          planning your next idea with exalidraw →
-        </a>
-      </p>
-      <p>
-        <a
-          class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
-          href="#"
-        >
-          How I track trains in Cape Town →
-        </a>
-      </p>
+      {
+        writing.slice(0, 3).map((post) => (
+          <p>
+            <a
+              class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
+              href={`/${post.id}`}
+            >
+              {post.data.title} →
+            </a>
+          </p>
+        ))
+      }
     </section>
 
     <section class="space-y-3 mb-8" id="moments">

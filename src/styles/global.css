@@ -88,10 +88,6 @@ body {
   font-family: var(--font-sans);
 }
 
-.section-divider {
-  border-top: 1px solid var(--border);
-}
-
 .prose-site {
   max-width: 70ch;
   line-height: 1.7;
@@ -110,7 +106,46 @@ body {
   margin-block: 1em;
 }
 
-.prose-site a {
+.prose-site :where(ul, ol) {
+  padding-left: 1.5rem;
+}
+
+.prose-site ul {
+  list-style: disc;
+}
+
+.prose-site ol {
+  list-style: decimal;
+}
+
+.prose-site li {
+  margin-block: 0.35em;
+}
+
+.prose-site li::marker {
+  color: var(--muted-foreground);
+}
+
+.prose-site li > :first-child {
+  margin-top: 0;
+}
+
+.prose-site li > :last-child {
+  margin-bottom: 0;
+}
+
+.prose-site blockquote {
+  border-left: 1px solid var(--border);
+  padding-left: 1rem;
+  color: var(--foreground);
+  font-size: 1.05em;
+}
+
+.prose-site blockquote p {
+  margin-block: 0.5em;
+}
+
+.prose-site a:not([data-prose-media-link]) {
   color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 0.2em;

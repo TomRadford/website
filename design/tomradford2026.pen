@@ -9472,6 +9472,889 @@
           "layout": "none"
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "7VW8K",
+      "x": 11586,
+      "y": 2835,
+      "name": "Moments Page",
+      "width": 1200,
+      "fill": [
+        "#090B10",
+        {
+          "type": "gradient",
+          "gradientType": "radial",
+          "enabled": true,
+          "opacity": 0.9,
+          "rotation": 0,
+          "size": {
+            "width": 1.15,
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#3A568FCC",
+              "position": 0
+            },
+            {
+              "color": "#1A274F88",
+              "position": 0.38
+            },
+            {
+              "color": "#0D122044",
+              "position": 0.62
+            },
+            {
+              "color": "#090B1000",
+              "position": 1
+            }
+          ],
+          "center": {
+            "x": 1,
+            "y": 0.52
+          }
+        }
+      ],
+      "layout": "vertical",
+      "gap": 44,
+      "padding": [
+        28,
+        44,
+        44,
+        44
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "sxaJg",
+          "name": "nav2",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "7KtQL",
+              "name": "brandWrap2",
+              "layout": "vertical",
+              "gap": 2,
+              "children": [
+                {
+                  "type": "rectangle",
+                  "id": "phVKE",
+                  "name": "line1",
+                  "fill": "#ffffffff",
+                  "width": "fill_container",
+                  "height": 2
+                },
+                {
+                  "type": "text",
+                  "id": "10W09",
+                  "name": "brandText",
+                  "fill": "#F8FAFC",
+                  "content": "Tom Radford",
+                  "fontFamily": "Geist",
+                  "fontSize": 18,
+                  "fontWeight": "900"
+                },
+                {
+                  "type": "rectangle",
+                  "id": "r7uHZ",
+                  "name": "line2",
+                  "fill": "#ffffffff",
+                  "width": "fill_container",
+                  "height": 2
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "YEmBJ",
+              "name": "links2",
+              "gap": 26,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "CYOoM",
+                  "name": "linkAbout",
+                  "fill": "#9CA3AF",
+                  "content": "About",
+                  "fontFamily": "Geist",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "eBBsA",
+                  "name": "linkBlog",
+                  "fill": "#9CA3AF",
+                  "content": "Blog",
+                  "fontFamily": "Geist",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "eZ2Xu",
+                  "name": "linkProjects",
+                  "fill": "#9CA3AF",
+                  "content": "Projects",
+                  "fontFamily": "Geist",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "rhLEt",
+              "name": "modeToggle",
+              "fill": "#6B7280",
+              "content": "Dark / Light",
+              "fontFamily": "Geist",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "DRrAA",
+          "name": "introSection",
+          "width": "fill_container",
+          "stroke": {
+            "thickness": {
+              "top": 1
+            },
+            "fill": "#1F2430"
+          },
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            20,
+            0,
+            0,
+            0
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "Wai0W",
+              "name": "title",
+              "fill": "#F3F4F6",
+              "content": "Moments",
+              "fontFamily": "Geist",
+              "fontSize": 28,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "TAxMU",
+              "name": "subtitle",
+              "fill": "#94A3B8",
+              "textGrowth": "fixed-width",
+              "width": 600,
+              "content": "Snapshots from behind the scenes, on set, and out in the world. Click any image to view.",
+              "lineHeight": 1.5,
+              "fontFamily": "Geist",
+              "fontSize": 16,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "wIyUF",
+          "name": "imageGrid",
+          "width": "fill_container",
+          "gap": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "AGaxV",
+              "name": "col1",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "IuIiY",
+                  "name": "card1",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Uz5Dd",
+                      "name": "img1",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 280,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "IMG_20211013_165515.jpg",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "I19LV",
+                      "name": "cap1",
+                      "fill": "#94A3B8",
+                      "content": "Explaining ideas in motion.",
+                      "fontFamily": "Geist",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "H7tJa",
+                  "name": "card2",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "uyQY7",
+                      "name": "img2",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 220,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "IMG_2946.jpg",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "bS8RL",
+                      "name": "cap2",
+                      "fill": "#94A3B8",
+                      "content": "Collaborative product debugging.",
+                      "fontFamily": "Geist",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "4pbvB",
+                  "name": "card3",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "N3lcs",
+                      "name": "img3",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 260,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "DSCF3945.jpg",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "tYbdT",
+                      "name": "cap3",
+                      "fill": "#94A3B8",
+                      "content": "Behind the scenes filmmaking.",
+                      "fontFamily": "Geist",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "q1WtR",
+              "name": "col2",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "sNJnz",
+                  "name": "card4",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "8YNVP",
+                      "name": "img4",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 240,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "IMG_2957.jpg",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "EEG59",
+                      "name": "cap4",
+                      "fill": "#94A3B8",
+                      "content": "On set, solving creative problems.",
+                      "fontFamily": "Geist",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "SKi2q",
+                  "name": "card5",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "g19zo",
+                      "name": "img5",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 300,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "IMG_20210724_114602.jpg",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "slxvG",
+                      "name": "cap5",
+                      "fill": "#94A3B8",
+                      "content": "Exploring with a curious eye.",
+                      "fontFamily": "Geist",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "xcXNy",
+                  "name": "card6",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "5CUQx",
+                      "name": "img6",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 220,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "DSCF4188.jpg",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "gwjEl",
+                      "name": "cap6",
+                      "fill": "#94A3B8",
+                      "content": "Building with great people.",
+                      "fontFamily": "Geist",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "y2Kba",
+              "name": "col3",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Ylngi",
+                  "name": "card7",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "yOvAK",
+                      "name": "img7",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 260,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "7ecea8e2-7307-4a0e-bbb1-8b41503a777f.jpg",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "KO5EL",
+                      "name": "cap7",
+                      "fill": "#94A3B8",
+                      "content": "Community and shared momentum.",
+                      "fontFamily": "Geist",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "rH3B4",
+                  "name": "card8",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "7Idqi",
+                      "name": "img8",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 300,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "IMG-20220816-WA0024.jpg",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "olmTj",
+                      "name": "cap8",
+                      "fill": "#94A3B8",
+                      "content": "Sharing what I learn.",
+                      "fontFamily": "Geist",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "fOf6E",
+          "name": "bottomCluster",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 20,
+          "children": [
+            {
+              "type": "frame",
+              "id": "0lMRR",
+              "name": "logoTickerSep",
+              "clip": true,
+              "width": "fill_container",
+              "height": 52,
+              "stroke": {
+                "thickness": {
+                  "top": 3,
+                  "bottom": 3
+                },
+                "fill": "#ffffffff"
+              },
+              "layout": "none",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "4ev8t",
+                  "x": -140,
+                  "y": 0,
+                  "name": "tickerTrack",
+                  "height": 52,
+                  "gap": 25,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "D3gDr",
+                      "name": "t1",
+                      "fill": "#E2E8F0",
+                      "content": "Tom Radford",
+                      "fontFamily": "Geist",
+                      "fontSize": 30,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "HXcm3",
+                      "name": "t2",
+                      "fill": "#E2E8F0",
+                      "content": "Tom Radford",
+                      "fontFamily": "Geist",
+                      "fontSize": 30,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "rt6uh",
+                      "name": "t3",
+                      "fill": "#E2E8F0",
+                      "content": "Tom Radford",
+                      "fontFamily": "Geist",
+                      "fontSize": 30,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "BvUl3",
+                      "name": "t4",
+                      "fill": "#E2E8F0",
+                      "content": "Tom Radford",
+                      "fontFamily": "Geist",
+                      "fontSize": 30,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "nABg3",
+                      "name": "t5",
+                      "fill": "#E2E8F0",
+                      "content": "Tom Radford",
+                      "fontFamily": "Geist",
+                      "fontSize": 30,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "1NyNE",
+                      "name": "t6",
+                      "fill": "#E2E8F0",
+                      "content": "Tom Radford",
+                      "fontFamily": "Geist",
+                      "fontSize": 30,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "ao1Fz",
+              "name": "loc",
+              "fill": "#A5B4FC",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Cape Town, ZA",
+              "lineHeight": 1.4,
+              "textAlign": "center",
+              "fontFamily": "Geist Mono",
+              "fontSize": 14,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "EOW7p",
+              "name": "footer",
+              "width": "fill_container",
+              "stroke": {
+                "thickness": {
+                  "top": 1
+                },
+                "fill": "#1F2430"
+              },
+              "padding": [
+                20,
+                0,
+                0,
+                0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "LnCaY",
+                  "name": "email",
+                  "fill": "#CBD5E1",
+                  "content": "tom@theradford.com",
+                  "fontFamily": "Geist",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "7RmT5",
+                  "name": "tagline",
+                  "fill": "#94A3B8",
+                  "content": "Jazzed on creating meaningful problem-orientated solutions",
+                  "fontFamily": "Geist",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "0WnsQ",
+                  "name": "socials",
+                  "gap": 18,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "BjMkP",
+                      "name": "linkedin",
+                      "fill": "#CBD5E1",
+                      "content": "LinkedIn",
+                      "fontFamily": "Geist",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "vJ31d",
+                      "name": "github",
+                      "fill": "#CBD5E1",
+                      "content": "GitHub",
+                      "fontFamily": "Geist",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "qanJ5",
+      "x": 12886,
+      "y": 2835,
+      "name": "Moments - Full Screen View",
+      "clip": true,
+      "width": 1200,
+      "height": 800,
+      "fill": "#090B10",
+      "layout": "none",
+      "children": [
+        {
+          "type": "rectangle",
+          "id": "xBJxv",
+          "x": 0,
+          "y": 0,
+          "name": "overlay",
+          "fill": "#000000DD",
+          "width": 1200,
+          "height": 800
+        },
+        {
+          "type": "frame",
+          "id": "gFQy6",
+          "x": 150,
+          "y": 60,
+          "name": "mainImage",
+          "clip": true,
+          "width": 900,
+          "height": 620,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "IMG_2957.jpg",
+            "mode": "fill"
+          },
+          "cornerRadius": 12
+        },
+        {
+          "type": "frame",
+          "id": "uCCK1",
+          "x": 44,
+          "y": 20,
+          "name": "topBar",
+          "width": 1112,
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "MtU86",
+              "name": "backLink",
+              "gap": 6,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Rgvc0",
+                  "name": "backArrow",
+                  "fill": "#CBD5E1",
+                  "content": "←",
+                  "fontFamily": "Geist",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "Nu1hN",
+                  "name": "backText",
+                  "fill": "#CBD5E1",
+                  "content": "Back to moments",
+                  "fontFamily": "Geist",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "XgoAz",
+              "name": "counter",
+              "fill": "#6B7280",
+              "content": "2 / 8",
+              "fontFamily": "Geist Mono",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "0Wbhw",
+              "name": "closeBtn",
+              "fill": "#9CA3AF",
+              "content": "✕",
+              "fontFamily": "Geist",
+              "fontSize": 20,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Vuhg4",
+          "x": 44,
+          "y": 700,
+          "name": "bottomInfo",
+          "width": 1112,
+          "layout": "vertical",
+          "gap": 4,
+          "children": [
+            {
+              "type": "text",
+              "id": "gAy4J",
+              "name": "caption",
+              "fill": "#E2E8F0",
+              "content": "On set, solving creative problems.",
+              "fontFamily": "Geist",
+              "fontSize": 16,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "AQOeq",
+              "name": "meta",
+              "fill": "#6B7280",
+              "content": "Taken during production — Cape Town, 2021",
+              "fontFamily": "Geist",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "gvRgs",
+          "x": 60,
+          "y": 348,
+          "name": "prevBtn",
+          "width": 44,
+          "height": 44,
+          "fill": "#1F243080",
+          "cornerRadius": 22,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "nQmDa",
+              "name": "prevArrow",
+              "fill": "#E2E8F0",
+              "content": "←",
+              "fontFamily": "Geist",
+              "fontSize": 20,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "nDXEx",
+          "x": 1096,
+          "y": 348,
+          "name": "nextBtn",
+          "width": 44,
+          "height": 44,
+          "fill": "#1F243080",
+          "cornerRadius": 22,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "c7frP",
+              "name": "nextArrow",
+              "fill": "#E2E8F0",
+              "content": "→",
+              "fontFamily": "Geist",
+              "fontSize": 20,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

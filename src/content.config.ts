@@ -1,5 +1,5 @@
 import { defineCollection } from 'astro:content';
-import { file } from 'astro/loaders';
+import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
 const moments = defineCollection({
@@ -12,4 +12,34 @@ const moments = defineCollection({
     }),
 });
 
-export const collections = { moments };
+const projects = defineCollection({
+  loader: glob({ base: './src/content/projects', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    title: z.string(),
+    tagline: z.string(),
+    links: z
+      .array(
+        z.object({
+          title: z.string(),
+          link: z.string().url(),
+        })
+      )
+      .default([]),
+    description: z.string(),
+    tags: z.array(z.string()).default([]),
+    socialImage: z.string().optional(),
+  }),
+});
+
+const writing = defineCollection({
+  loader: glob({ base: './src/content/writing', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    publishedAt: z.coerce.date(),
+    tags: z.array(z.string()).default([]),
+    socialImage: z.string().optional(),
+  }),
+});
+
+export const collections = { moments, projects, writing };

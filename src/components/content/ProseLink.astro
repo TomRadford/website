@@ -1,0 +1,23 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'a'> {}
+
+const { href, class: className, ...attrs } = Astro.props;
+const isMediaLink =
+  typeof href === 'string' && /\.(avif|gif|jpe?g|png|svg|webp)$/i.test(href.split('?')[0] ?? href);
+---
+
+<a
+  class:list={[
+    !isMediaLink && 'text-accent underline decoration-current hover:opacity-90',
+    isMediaLink && 'not-prose block no-underline ',
+    className,
+  ]}
+  target="_blank"
+  data-prose-media-link={isMediaLink ? 'true' : undefined}
+  href={href}
+  {...attrs}
+>
+  <slot />
+</a>

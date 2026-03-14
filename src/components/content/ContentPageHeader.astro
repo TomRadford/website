@@ -1,0 +1,66 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import Link from '../ui/Link.astro';
+import { formatDate } from '../../utils/format-date';
+import { ExternalLinkIcon } from '@lucide/astro';
+
+interface LinkItem {
+  title: string;
+  link: string;
+}
+
+interface Props extends HTMLAttributes<'header'> {
+  entity: string;
+  title: string;
+  description: string;
+  tags?: string[];
+  publishedAt?: Date;
+  links?: LinkItem[];
+}
+
+const {
+  entity,
+  title,
+  description,
+  tags = [],
+  publishedAt,
+  links = [],
+  class: className,
+}: Props = Astro.props;
+---
+
+<header class:list={['flex flex-col gap-5 lg:text-center', className]}>
+  <div class="flex flex-col gap-3">
+    <p class="text-xs font-medium text-muted-foreground uppercase">{entity}</p>
+    {
+      publishedAt && (
+        <p class="text-sm leading-relaxed font-light text-muted-foreground">
+          {formatDate(publishedAt)}
+        </p>
+      )
+    }
+    <h1 class="text-3xl leading-tight font-semibold text-foreground md:text-5xl">{title}</h1>
+    <p class="max-w-2xl text-sm leading-relaxed text-body-copy md:text-lg mx-auto">{description}</p>
+  </div>
+
+  {
+    tags.length > 0 && (
+      <p class="font-mono text-xs leading-relaxed text-muted-foreground md:text-sm">
+        {tags.join(' · ')}
+      </p>
+    )
+  }
+
+  {
+    links.length > 0 && (
+      <div class="flex flex-wrap lg:justify-center gap-x-5 gap-y-3 pt-1">
+        {links.map((link) => (
+          <Link href={link.link} rel="noreferrer" target="_blank" variant="accent">
+            {link.title}
+            <ExternalLinkIcon size={14} stroke-width={2} />
+          </Link>
+        ))}
+      </div>
+    )
+  }
+</header>
