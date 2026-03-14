@@ -1,0 +1,32 @@
+---
+import { getCollection, render } from 'astro:content';
+import ProseImage from '../../components/content/ProseImage.astro';
+import ProseLink from '../../components/content/ProseLink.astro';
+import Prose from '../../components/Prose.astro';
+import ProjectPageHeader from '../../components/projects/ProjectPageHeader.astro';
+import RootLayout from '../../layouts/RootLayout.astro';
+import PageLayout from '../../layouts/PageLayout.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<RootLayout description={project.data.description} title={project.data.title}>
+  <PageLayout>
+    <article class="mx-auto flex w-full max-w-3xl flex-col gap-2 md:gap-4">
+      <ProjectPageHeader project={project} />
+      <Prose>
+        <Content components={{ a: ProseLink, img: ProseImage }} />
+      </Prose>
+    </article>
+  </PageLayout>
+</RootLayout>

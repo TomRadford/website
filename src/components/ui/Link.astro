@@ -1,5 +1,6 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import LinkIcon from '@lucide/astro/icons/link';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../utils/cn';
 
@@ -18,7 +19,7 @@ const linkVariants = cva('text-sm font-medium md:text-base', {
 export interface Props extends HTMLAttributes<'a'>, VariantProps<typeof linkVariants> {}
 
 const { class: className, variant = 'default', ...props } = Astro.props;
-const classes = cn(linkVariants({ variant }), className);
+const classes = cn('inline-flex items-center gap-2', linkVariants({ variant }), className);
 ---
 
 <a class={classes} {...props}>
