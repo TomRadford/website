@@ -1,0 +1,38 @@
+---
+import { getCollection, render } from 'astro:content';
+import ContentPageHeader from '../components/content/ContentPageHeader.astro';
+import ProseImage from '../components/content/ProseImage.astro';
+import ProseLink from '../components/content/ProseLink.astro';
+import Prose from '../components/Prose.astro';
+import RootLayout from '../layouts/RootLayout.astro';
+import PageLayout from '../layouts/PageLayout.astro';
+
+export async function getStaticPaths() {
+  const writing = await getCollection('writing');
+
+  return writing.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<RootLayout description={post.data.description} title={post.data.title}>
+  <PageLayout>
+    <article class="mx-auto flex w-full max-w-3xl flex-col gap-2 md:gap-4">
+      <ContentPageHeader
+        description={post.data.description}
+        entity="Writing"
+        publishedAt={post.data.publishedAt}
+        tags={post.data.tags}
+        title={post.data.title}
+      />
+      <Prose>
+        <Content components={{ a: ProseLink, img: ProseImage }} />
+      </Prose>
+    </article>
+  </PageLayout>
+</RootLayout>

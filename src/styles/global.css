@@ -88,10 +88,6 @@ body {
   font-family: var(--font-sans);
 }
 
-.section-divider {
-  border-top: 1px solid var(--border);
-}
-
 .prose-site {
   max-width: 70ch;
   line-height: 1.7;

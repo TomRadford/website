@@ -1,0 +1,40 @@
+---
+import ArrowRightIcon from '@lucide/astro/icons/arrow-right';
+import { formatDate } from '../../utils/format-date';
+
+interface Props {
+  href: string;
+  title: string;
+  excerpt?: string;
+  tags?: string[];
+  publishedAt?: Date;
+}
+
+const { href, title, excerpt, tags = [], publishedAt }: Props = Astro.props;
+---
+
+<article class="flex flex-col gap-3 py-5 md:gap-4 md:py-6">
+  <div class="flex flex-col gap-2">
+    {
+      publishedAt && (
+        <p class="text-xs leading-relaxed text-muted-foreground">{formatDate(publishedAt)}</p>
+      )
+    }
+    <a
+      class="inline-flex items-center gap-1 text-xl leading-tight font-medium text-foreground transition-colors hover:text-accent md:text-3xl"
+      href={href}
+    >
+      <span>{title}</span>
+      <ArrowRightIcon aria-hidden="true" class="mt-1" size={24} stroke-width={3} />
+    </a>
+    {excerpt && <p class="text-sm leading-relaxed text-body-copy md:text-base">{excerpt}</p>}
+  </div>
+
+  {
+    tags.length > 0 && (
+      <p class="font-mono text-xs leading-relaxed text-muted-foreground md:text-sm">
+        {tags.join(' · ')}
+      </p>
+    )
+  }
+</article>

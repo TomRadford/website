@@ -17,6 +17,9 @@ const moments = await getCollection('moments');
 const projects = (await getCollection('projects')).sort((a, b) =>
   a.data.title.localeCompare(b.data.title)
 );
+const writing = (await getCollection('writing')).sort(
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
+);
 const skills = [
   'Web dev',
   'Runner',
@@ -94,30 +97,18 @@ const skills = [
 
     <section class="space-y-3" id="writing">
       <h2 class="text-xl font-semibold text-foreground md:text-2xl">Latest writing</h2>
-      <p>
-        <a
-          class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
-          href="#"
-        >
-          building a web-component with vue →
-        </a>
-      </p>
-      <p>
-        <a
-          class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
-          href="#"
-        >
-          planning your next idea with exalidraw →
-        </a>
-      </p>
-      <p>
-        <a
-          class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
-          href="#"
-        >
-          How I track trains in Cape Town →
-        </a>
-      </p>
+      {
+        writing.slice(0, 3).map((post) => (
+          <p>
+            <a
+              class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
+              href={`/${post.id}`}
+            >
+              {post.data.title} →
+            </a>
+          </p>
+        ))
+      }
     </section>
 
     <section class="space-y-3 mb-8" id="moments">
