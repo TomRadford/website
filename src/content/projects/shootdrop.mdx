@@ -3,47 +3,99 @@ title: Shootdrop
 tagline: Collaborative asset list creation for film makers.
 description: A tool for creating Gear Lists for film shoots with a user-driven database of all the latest camera, lighting, grips and sound gear.
 links:
-  - title: Check it out
+  - title: Shootdrop.com
     link: https://shootdrop.com
   - title: Github
     link: https://github.com/tomradford/shootdrop
+  - title: Reddit post
+    link: https://www.reddit.com/r/cinematography/comments/10l0jry/i_made_a_tool_to_help_you_make_gear_lists_for/
 tags:
   - Film making
   - Software dev
+  - Indie-hacking
   - Collaboration tools
+  - Product design
 ---
 
-Introducing ShootDrop - a tool for creating Gear Lists for film shoots with a user-driven database of all the latest camera, lighting, grips and sound gear.
+This bad boy is a tool for creating Gear Lists for film shoots.
+
+DISCLAIMER, this write-up is a bit of a retrospective for me, I built this back in 2022/23 while moving out of the film industry and was absolutely frothing to solve this problem.
+It 100% gave me the boost I needed as a builder. Before this project I had been doing a lot of hacking together of frameworks and CMS's to build stuff (RIP Drupal lol).
+They never really allowed me to achieve my dreams and, to be honest, up to then I wasnt thinking in enough of a product mindset to even plan things well enough to build more complex tings.
+I had built up some decent React/Node/Typescript skillz at this point but had never created something big and crazy from scratch - ie: just me and my imagination going wild.
+
+## YOLO
+
+Around the end of August 2022, after wrapping up what ended up being my last film job, I decided to take a 3 month break from freelance work (both dev and film-making) and focus on shootdrop.
+It was scary (because rent ya know?) but holyshit what banger of a life choice, no regrets.
+
+Looking back, I was like "I can do this"... and damn did I do it.
 
 ![My sick-ass landing page](./landing.png)
 
-When I used to work on film shoots, I always struggled collaborating on creating gear lists. It freaking sucked.
-During prep, I always sucked at making gear lists - they were time-consuming and hard to collaborate on.
-
-![Speadsheets suck!](./spreadsheet.png)
-
-With the affirmation of this issue and input from friends in the industry, I drafted up a list of the core issues that needed solving - building the blueprint for a lightweight, dead simple problem-centric solution.
-
-![Excalidraw for the win](./)
-
-I set out to implement this solution using NodeJS GraphQL API with a MongoDB database/AWS S3 and hooking into it with a NextJS web app complemented by TailwindCSS for rapid component styling along with Apollo Client for data fetching and state management.
-
-Stoked to share that I'm ending the year with the MVP up and running! So far, we've had a number of filmmakers sign up and try it out since the launch over Instagram last week and I've been getting some awesome feedback on where improvements can be made... as well as some invaluable bug-crunching experience!
-
-Check out this [link](google.com)
-
 ## The problem
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ultricies, nunc at posuere tristique, nibh purus posuere lorem, a feugiat velit lectus vel justo.
+When I used to work on film shoots, during prep I always struggled with creating and collaborating on gear lists. It freaking sucked.
 
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-- Vestibulum accumsan nisi vitae libero feugiat, at pretium sem vulputate.
-- Suspendisse potenti. Praesent posuere lectus in velit consequat luctus.
+![Speadsheets are boring!](./spreadsheet.png)
 
-## What I built
+Im always advocating for very well defined problems, so I cooked up a comprehensive list of the problems I had:
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a dui eget erat pellentesque commodo. Duis non libero vel augue ultrices volutpat. Integer iaculis sapien a leo ultrices, nec imperdiet tortor fermentum.
+Here's the _unchanged_ list of problems I jotted down in 2021:
 
-### Why it mattered
+**making gear lists is time-consuming**...
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean laoreet, nunc ut feugiat faucibus, turpis risus pharetra nibh, at luctus velit felis sed justo. Quisque non urna ac massa aliquet tristique.
+- it's hard to know all the available gear options
+  - list & name them correctly
+  - group them (grips/lighting/camera/sound)
+  - tag them (Fixtures. Accessories. Textiles Stands.
+    Cables. Stands. Silks. Frames.)
+  - add on-item preferences
+    (v-mount plate/eyepeice/X-OCN w/AXS-R7)
+  - comment on items
+    ("Needed for IR pollution on BMPCC")
+  - know what simmilair items are
+- it's hard to keep the list up to date
+  - inform others of changes (email/whatsapp)
+  - let collaborators (gaffer) add items
+    - know who added what
+  - let gear house acknowledge and qoute
+- I dont want to think about set-up
+  - it's all there and ready to go
+  - no complex sign-up
+
+This list got all of them wheels spinning and soon I had a pretty clear idea of what I **needed** to build.
+
+## The market
+
+Before cooking up code and sinking time into this bad boi. Who was I building this for?
+
+Mostly me, which is cute to say but I was on my way out of the industry (sad 😢) so I needed a clear idea who was gonna use this thang.
+
+Again, _unchanged_, see my plan:
+
+WHO? --> DP's, Gaffers, AC's & ALL-IN-ONE FILMAKERS
+
+HOW? --> DB of CHEAP, POPULAR GEAR (no arri yet)
+
+WHERE --> IG = use userbase of DPs / film makers! Screen recordings to share.
+
+WHERE --> LinkedIn (people on LI wont use it but they might be stoked to see!)
+
+WHEN --> now, this thing is built! The more cheap gear the better, more attractive it gets!
+
+THEN --> Interate slowly adding small improvements/features MVP baby!
+
+## The tech
+
+Me in 2022:
+
+> I set out to implement this solution using NodeJS GraphQL API with a MongoDB database/AWS S3 and hooking into it with a NextJS web app complemented by TailwindCSS for rapid component styling along with Apollo Client for data fetching and state management.
+> As with anything in the JS ecosystem, this is cute to read today. I knew NoSQL so I used NoSQL but damn would this thing have benefited from a SQL DB (maybe postgres + drizzle for the re-write 😈).
+
+<div class="hidden dark:block">![Excalidraw for the win](./arch-dark.svg)</div>
+<div class="dark:hidden">![Excalidraw for the win](./arch-light.svg)</div>
+
+Another cute thing I wrote in 2022:
+
+> Stoked to share that I'm ending the year with the MVP up and running! So far, we've had a number of filmmakers sign up and try it out since the launch over Instagram last week and I've been getting some awesome feedback on where improvements can be made... as well as some invaluable bug-crunching experience!
