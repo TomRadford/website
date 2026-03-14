@@ -29,9 +29,9 @@ const {
 }: Props = Astro.props;
 ---
 
-<header class:list={['flex flex-col gap-5', className]}>
+<header class:list={['flex flex-col gap-5 lg:text-center', className]}>
   <div class="flex flex-col gap-3">
-    <p class="text-xs font-medium tracking-[0.16em] text-muted-foreground uppercase">{entity}</p>
+    <p class="text-xs font-medium text-muted-foreground uppercase">{entity}</p>
     {
       publishedAt && (
         <p class="text-sm leading-relaxed font-light text-muted-foreground">
@@ -40,7 +40,7 @@ const {
       )
     }
     <h1 class="text-3xl leading-tight font-semibold text-foreground md:text-5xl">{title}</h1>
-    <p class="max-w-2xl text-sm leading-relaxed text-body-copy md:text-lg">{description}</p>
+    <p class="max-w-2xl text-sm leading-relaxed text-body-copy md:text-lg mx-auto">{description}</p>
   </div>
 
   {
@@ -53,7 +53,7 @@ const {
 
   {
     links.length > 0 && (
-      <div class="flex flex-wrap gap-x-5 gap-y-3 pt-1">
+      <div class="flex flex-wrap lg:justify-center gap-x-5 gap-y-3 pt-1">
         {links.map((link) => (
           <Link href={link.link} rel="noreferrer" target="_blank" variant="accent">
             {link.title}
