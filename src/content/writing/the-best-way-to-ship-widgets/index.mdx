@@ -93,7 +93,7 @@ which allows use to bundle our vue app entrypoint as a freaking web component �
 
 ## Show me the 💸
 
-Yeah yeah.. you wanna see the thing... well here it is, embeded straight into this Astro website, have a play around!
+Yeah yeah.. you wanna see the thing... well here it is (I called it **flowvue**), embeded straight into this Astro website, have a play around!
 
 <script type="module" src="https://flowvue.rad.gdn/dist/flow-vue.js"></script>
 
@@ -101,9 +101,9 @@ Yeah yeah.. you wanna see the thing... well here it is, embeded straight into th
 
 Cool hey!? In particular I love what vue's built-in [Transition](https://vuejs.org/guide/built-ins/transition.html) component enables for easy entrance/exit animations.
 
-This is all I had to do to add this:
+This is all I had to do:
 
-```
+```js
 <script type="module" src="https://flowvue.rad.gdn/dist/flow-vue.js"></script>
 
 <flow-vue />
@@ -115,9 +115,14 @@ Sorry about initial layout shift, I didnt quite get the SSR bit right since that
 
 ## Tech
 
-- The web component [bundles](https://github.com/TomRadford/flowvue/blob/main/lib/vite.config.ts) the `FlowVue` component into a `flow-vue` web component - which works as a mini-app and nicely seperates itself from the rest of the user's website. See the entrypoint code [here](https://github.com/TomRadford/flowvue/blob/main/lib/entry.ts). Very simple, just registed
+- The web component [bundles](https://github.com/TomRadford/flowvue/blob/main/lib/vite.config.ts) the `FlowVue` component into a `flow-vue` web component - which works as a mini-app and nicely seperates itself from the rest of the user's website. See the entrypoint code [here](https://github.com/TomRadford/flowvue/blob/main/lib/entry.ts).
+  Very simple, just registers the web component with `customElements.define("flow-vue", CustomComponentElement)`.
 - The [nuxt marketing site](https://flowvue.rad.gdn) uses the `FlowVue` component directly (since we know we're already in a vue app with mostly the same deps)
 
 You can suss out all the code/tech stack [here](https://github.com/TomRadford/flowvue/) - some cool stuff including code-splitting from within the web component bundle! 🤯 This [shows a loader](https://github.com/TomRadford/flowvue/blob/main/constants/flow.ts) while the next chunk (ie: the next page) loads-in, very cool!
 
 Thanks for reading thus far, stoked you enjoyed reading us much as I had making this thing! 😎🔥
+
+Hope ya stick around to read some more of my stuff.
+
+See ya! 🚶💨🔥
