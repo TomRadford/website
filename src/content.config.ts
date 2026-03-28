@@ -2,6 +2,15 @@ import { defineCollection } from 'astro:content';
 import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
+const contentLinksSchema = z
+  .array(
+    z.object({
+      title: z.string(),
+      link: z.string().url(),
+    })
+  )
+  .default([]);
+
 const moments = defineCollection({
   loader: file('src/content/moments/moments.json'),
   schema: ({ image }) =>
@@ -17,14 +26,7 @@ const projects = defineCollection({
   schema: z.object({
     title: z.string(),
     tagline: z.string(),
-    links: z
-      .array(
-        z.object({
-          title: z.string(),
-          link: z.string().url(),
-        })
-      )
-      .default([]),
+    links: contentLinksSchema,
     description: z.string(),
     tags: z.array(z.string()).default([]),
     socialImage: z.string().optional(),
@@ -37,6 +39,7 @@ const writing = defineCollection({
     title: z.string(),
     description: z.string(),
     publishedAt: z.coerce.date(),
+    links: contentLinksSchema,
     tags: z.array(z.string()).default([]),
     socialImage: z.string().optional(),
   }),
