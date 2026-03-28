@@ -41,7 +41,12 @@ const jsonLdPayload = jsonLd ? JSON.stringify(Array.isArray(jsonLd) ? jsonLd : [
     <meta name="author" content={titleSuffix} />
     <meta name="robots" content={robotsContent} />
     <meta name="theme-color" content="#0f172a" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
     {canonicalUrl && <link rel="canonical" href={canonicalUrl.toString()} />}
     {Astro.site && <link rel="sitemap" href={new URL('/sitemap-index.xml', Astro.site).toString()} />}
     {
