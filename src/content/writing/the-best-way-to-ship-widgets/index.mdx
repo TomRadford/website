@@ -9,13 +9,18 @@ tags:
   - Web development
   - Javascript
   - Widgets
+links:
+  - title: flowvue
+    link: https://flowvue.rad.gdn
+  - title: Github
+    link: https://github.com/TomRadford/flowvue
 ---
 
 Sometimes you need to put a part of a website into another website.
 
 I'm gonna call this a **widget**. Think something like:
 
-- a support popup (Itercom)
+- a support popup (Intercom)
 - comment element (Disqus).
 - anything else that enhances a website with low effort from the web dev.
 
@@ -53,7 +58,7 @@ As an experiment, I wanted to build a **personal income statement generator** th
 ## Vue 🤝 web components
 
 When I was playing with this idea in early 2025, I was learning [Vue](https://vuejs.org/) - mostly just out of curiousity to see how the DX stacked-up against my React and Svelte experiences.
-I _really enjoying it_.
+I was _really enjoying it_.
 
 As a nice cowinkydink... turns out, the vue vite plugin has this gem:
 
@@ -68,6 +73,22 @@ As a nice cowinkydink... turns out, the vue vite plugin has this gem:
     }),
 ```
 
+along with this bangin util from vue:
+
+```ts
+// Convert Vue component to custom element
+const CustomComponentElement = defineCustomElement(FlowVue, {
+  configureApp: (app) => {
+    app.use(pinia);
+  },
+  shadowRoot: true,
+  // Since FlowVue doesn't import our tailwind main.css,
+  // we add it here, which inserts the all the styles as an inline
+  // <style> tag to the shadow root - which allows them to be scoped to this component.
+  styles: [mainCssText, ...(FlowVue.styles || [])],
+});
+```
+
 which allows use to bundle our vue app entrypoint as a freaking web component 🤯
 
 ## Show me the 💸
@@ -78,9 +99,25 @@ Yeah yeah.. you wanna see the thing... well here it is, embeded straight into th
 
 <flow-vue />
 
-Cool hey!? (sorry about the pop-in, I havent quite got the SSR bit right on this)
+Cool hey!? In particular I love what vue's built-in [Transition](https://vuejs.org/guide/built-ins/transition.html) component enables for easy entrance/exit animations.
+
+This is all I had to do to add this:
+
+```
+<script type="module" src="https://flowvue.rad.gdn/dist/flow-vue.js"></script>
+
+<flow-vue />
+```
+
+👏👏👏
+
+Sorry about initial layout shift, I didnt quite get the SSR bit right since that would depend on web-component server rendering on the consumer site somehow. If you look at the [marketing site](https://flowvue.rad.gdn) you'll see it doesnt 'jump' because the vue component is getting SSR'd directly via [Nuxt](https://nuxt.com/).
 
 ## Tech
 
-- The marketing site uses the `FlowVue` component directly (since we know we're already in a vue app with mostly the same deps)
-- The web component bundles the `FlowVue` component into a `flow-vue` web component - which works as a mini-app and nicely seperates itself from the rest of the user's website.
+- The web component [bundles](https://github.com/TomRadford/flowvue/blob/main/lib/vite.config.ts) the `FlowVue` component into a `flow-vue` web component - which works as a mini-app and nicely seperates itself from the rest of the user's website. See the entrypoint code [here](https://github.com/TomRadford/flowvue/blob/main/lib/entry.ts). Very simple, just registed
+- The [nuxt marketing site](https://flowvue.rad.gdn) uses the `FlowVue` component directly (since we know we're already in a vue app with mostly the same deps)
+
+You can suss out all the code/tech stack [here](https://github.com/TomRadford/flowvue/) - some cool stuff including code-splitting from within the web component bundle! 🤯 This [shows a loader](https://github.com/TomRadford/flowvue/blob/main/constants/flow.ts) while the next chunk (ie: the next page) loads-in, very cool!
+
+Thanks for reading thus far, stoked you enjoyed reading us much as I had making this thing! 😎🔥
