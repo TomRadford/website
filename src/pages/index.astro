@@ -36,11 +36,21 @@ const skills = [
   'DnB enjoyer',
   'Hype-man',
 ];
+
+const homeSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Tom Radford',
+  alternateName: 'theradford.com',
+  url: 'https://theradford.com/',
+};
 ---
 
 <RootLayout
+  title="Tom Radford | Creative Engineer"
   description="Creative engineer shaping meaningful products through technical depth and strong vision."
   ogImage={DEFAULT_OG_IMAGE}
+  jsonLd={homeSchema}
 >
   <PageLayout>
     <section class="grid gap-8 md:grid-cols-5 md:gap-14" id="about">
