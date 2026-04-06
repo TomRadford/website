@@ -37,7 +37,6 @@ Something that's:
 Traditionally, embedding these "widgets" on your site gets distributed by means of:
 
 - yucky iframes (not very extensible)
-- npm packages / script tags (suss, could inject some naught stuff into your site 🤨)
 - framework-specific components (large support surface)
 
 Non of these feel particularly great imo.
@@ -46,18 +45,18 @@ Non of these feel particularly great imo.
 
 A while back, after fighting with yet another yucky widget experience, I worm-holed a bit on if there was a better solution to shipping widgets.
 
-Turns out **web components** are an absolutely GOATED solution for this use-case. They basically solution an answer for all of the above requirements! (scoped while still offering control).
-As an experiment, I wanted to see how I could ship one! I wanted some nice familiar tooling.
+Turns out **web components** are an absolutely GOATED solution for this use-case. They basically provide an answer for all of the above requirements! (scoped while still offering control).
+As an experiment, I wanted to see how I could ship one!
 
 ## The problem
 
-As an experiment, I wanted to build a **personal income statement generator** that anyone can embed in their site!
+As an experiment, I was keen to build a **personal income statement generator** that anyone can embed in their site!
 
 ![My cute figma mockup](./figma.png)
 
 ## Vue 🤝 web components
 
-When I was playing with this idea in early 2025, I was learning [Vue](https://vuejs.org/) - mostly just out of curiousity to see how the DX stacked-up against my React and Svelte experiences.
+When I was playing with this idea in early 2025, I was learning [Vue](https://vuejs.org/) - mostly just out of curiosity to see how the DX stacked-up against my React and Svelte experiences.
 I was _really enjoying it_.
 
 As a nice cowinkydink... turns out, the vue vite plugin has this gem:
@@ -111,7 +110,8 @@ This is all I had to do:
 
 👏👏👏
 
-Sorry about initial layout shift, I didnt quite get the SSR bit right since that would depend on web-component server rendering on the consumer site somehow. If you look at the [marketing site](https://flowvue.rad.gdn) you'll see it doesnt 'jump' because the vue component is getting SSR'd directly via [Nuxt](https://nuxt.com/).
+Sorry about initial layout shift, I didnt quite get the SSR bit right since that would depend on web-component server rendering on the consumer site somehow.
+If you look at the [marketing site](https://flowvue.rad.gdn) you'll see it doesnt 'jump' because the vue component is getting SSR'd directly via [Nuxt](https://nuxt.com/).
 
 ## Tech
 
