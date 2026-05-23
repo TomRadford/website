@@ -100,7 +100,18 @@ body {
   line-height: 1.25;
   color: var(--foreground);
   font-weight: 600;
+}
+
+.prose-site :where(h1) {
+  @apply text-3xl sm:text-4xl;
+}
+
+.prose-site :where(h2) {
   @apply text-2xl sm:text-3xl;
+}
+
+.prose-site :where(h3) {
+  @apply text-lg sm:text-xl;
 }
 
 .prose-site :where(p, ul, ol, blockquote, pre) {
