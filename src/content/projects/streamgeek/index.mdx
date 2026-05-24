@@ -1,0 +1,190 @@
+---
+title: Streamgeek
+tagline: DIY adaptive video streaming
+description: How I built a low-cost, self-owned video streaming stack with HLS playback, Cloudflare R2 delivery, and FFmpeg-based transcoding workflows.
+links:
+  - title: Github
+    link: https://github.com/TomRadford/streamgeek
+  - title: Example
+    link: https://video.rad.gdn
+  - title: HLS deep dive
+    link: https://jazco.dev/2024/07/05/hls/
+  - title: Cheap video hosting reference
+    link: https://screencasting.com/articles/cheap-video-hosting
+publishedAt: 2026-05-23
+tags:
+  - video
+  - straming
+  - cloudflare
+  - r2
+  - hls
+---
+
+Steaming video is tough! 
+
+## Why
+
+The key problem is:
+
+- Uploading a thicc video file directly and then letting your users play that bad boi via a simple `<video>` tag is a slow/bad experience.
+
+"But Tom" you say, "there a many many services that solve this already". To that I say:
+
+- Paid services often cost more money than they're worth (I'm looking at you Vimeo 🤨)
+- Free services like YouTube are untrustworthy (tracking yo users, adding banners, sneakying in a lil sneaky ad 🤭) - its a NO from me 😅 
+
+You can use tool's like the `media-chome` web component to render a custom [youtube video player](https://www.media-chrome.org/docs/en/media-elements/youtube-video) but you still get the yucky Youtube UI under it.
+
+![This kinda yucky, also probably voilates some TOCs and could break if youtube changes something](./media-chrome-yt.png)
+
+## Streaming protocols
+
+So how do these peeps make video chunk streaming possible? Enter the poorly named [HTTP Live Streaming protocol (HLS)](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)... well suited for VOD (which aint "live" lol). 
+
+It enables **adaptive** streaming - your users starts watching the vid ASAP (no matter the quality) and, based on their connection, chunks of different resolutions can get streamed in as they go - enabling a lekker smooth experience. There's a few other procotocols that do simmilair things like [DASH](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) (less popular but supports VP9) and [WebRTC](https://en.wikipedia.org/wiki/WebRTC) (low-latency for live streaming). HLS remains very [popular](https://www.mux.com/articles/hls-vs-dash-what-s-the-difference-between-the-video-streaming-protocols) for this async VOD (video-on-demand) style of video streaming tho.
+
+## Solution
+
+I wondered how hard it would be to spin up my own sneaky Vimeo/Youtube/Mux alternative using HLS streams without breaking the BANK or the BRAIN 💆💸
+
+Turns out, a little brain breaking - but IT WORKS BABAAY! 
+
+Introducing [Streamgeek](https://github.com/TomRadford/streamgeek)! Have a look at a fun lil life vid I made and uploaded to my streamgeek deployment:
+
+<div class="aspect-4/3 overflow-hidden">
+    <iframe class="size-full" src="https://video.rad.gdn/embed/LhnowVeYP6S" title="XS-20 FTW 🔥" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+</div>
+
+
+## The Idea
+
+Video streams that meet user expectations by being fast and reliable are traditionally something web devs would outsource to a third-party service (often just by embedding Youtube 🤮). Up to now, the excuse has been that rolling your own video hosting is "hard" or "expensive" - however I think that's not true in 2026 🤓
+
+I built **streamgeek** as a POC that you (yes you 🫵) can do this too. 
+
+The main pillars I had for this solution were as follows:
+
+1. highly available reliable adaptive videos served from a server in a close location = Cloudflare R2 and their edge network ✅
+2. very customisable hls video player that looks and works good = media-chrome's `hls-video-element` ✅
+3. less highly available uploads that are transcoded to HLS playlists. I'm uploading WAY LESS then viewers would be streaming. If this dies sometimes it would be irritating but chill = lightweight [hono](https://hono.dev/) app in nodejs piping through commands to ffmpeg on my own hardware ✅ 
+4. tying everything together with a nice ui and embed links (so you can share anywhere) = rwsdk + react + tailwind on cloudflare workers ✅
+
+<div className="hidden dark:block">
+  ![The architechture for this bad boi](./architechture-dark.svg)
+</div>
+
+<div className="block dark:hidden">
+  ![The architechture for this bad boi](./architechture-light.svg)
+</div>
+
+##  Storage
+
+Inspired by this [awesome article](https://screencasting.com/articles/cheap-video-hosting) by Screencasting.com - storing our hls video playlists on [Cloudflare R2](https://www.cloudflare.com/en-gb/developer-platform/products/r2/) means _free egress_ (yeah you heard that right dawg!) - you only pay for the amount of videos you store and not the bandwidth (ie: views) your videos get!
+
+Easy peasy! 🍋
+
+## Adaptive Video (the hard bit 🌶️)
+
+Adapting to different resolutions based on their bandwidth with adaptive bitrate streaming.
+
+![This HLS video starts with a 720p video chunk but then jumps up to 1080p chunks after realising the user's connection is more capable - awesome!](chunks-in-devtools.png)
+
+### The anatomy of an HLS stream
+
+[This](https://jazco.dev/2024/07/05/hls/) lovely article breaks it down in more detail but its basically:
+
+- A bunch of `.ts` (transport stream) files - these are the video chunks of different resolutions (not typescript files hehe). 
+- Each resolution has a `m3u8` media playlist that points to each of the corresponding resolutions's `ts` video chunks. 
+- There's a master `m3u8` file, this serves as the entrypoint for the HLS stream - pointing to each of the different resolutions. Your browser will generally start at the lowest quality and then bump up as a your speed is established.
+
+Here's an example of what that master playlist looks like:
+
+```txt
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-STREAM-INF:BANDWIDTH=10000000,RESOLUTION=2160x1440
+1440p.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=8000000,RESOLUTION=1620x1080
+1080p.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=5000000,RESOLUTION=1080x720
+720p.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=2500000,RESOLUTION=720x480
+480p.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=1000000,RESOLUTION=540x360
+360p.m3u8
+```
+
+
+### Sidebar: What about DASH?
+
+DASH is a competing standard for streaming video - with wider codec support and more customisability. I ultimately opted to use HLS instead due to its broader adoption. Mux has a [great write up](https://www.mux.com/articles/hls-vs-dash-what-s-the-difference-between-the-video-streaming-protocols) on the pros and cons of each. So you're loosing out on VP9 codec support (Google's awesome codec for web video) but winning with simplicity. I'll probably looks into adding it at some point 🔍
+
+## Encoding
+
+Being able to create these optimised HLS streams requires some horsepower. There are various ways about this... Some more attractive than others depending on how often you need post videos and (more importantly) how lazy or impatient you are.
+
+### On your computer
+
+In the past I've used a script like [this](https://gist.github.com/stenuto/9ff19ce89f07c7419a8d0976736ebe12) to spit out HLS playlists. This works but is quite a labour intensive process... I have to open a terminal, run the script, the upload files/ and then reference the uploaded playlist manually - I'm too lazy for that shit 🫃
+
+### In the browser
+
+While you could do this in the browser - its SLOW.
+
+Trying `ffmpeg-wasm` was something I looked into early on:
+
+- [this file converter](https://heledron.com/tools/file-converter/) (which uses ffmpeg compiled to web-assembly with [ffmpeg.wasm](https://ffmpegwasm.netlify.app/))
+- the ffmpeg.wasm [speed comparison](https://ffmpegwasm.netlify.app/docs/performance)
+
+both these demos kinda show me compiling ffmpeg to web-assembly makes it super damn slow 🐌
+
+There's also [Mediabunny](https://mediabunny.dev/) which provides an awesome api around the [WebCodecs API](https://developer.mozilla.org/en-US/docs/Web/API/WebCodecs_API) and [canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) using hardware acceleration! Honestly, this is a freaking solid option since they added [HLS support](https://github.com/Vanilagy/mediabunny/releases/tag/v1.42.0) last month 🥳 Perfomance is great on my M1 one Macbook Pro!
+
+![Media bunny HLS demo was yeeting](./mediabunny.png)
+
+### In the cloud
+
+Expenny 💸
+
+AWS Elastic Transcoder, Cloudflare Stream, Mux and various other services offer this to varying degrees of complexity and cost - but costs compute costs can really blow out of proportion quite quickly.
+
+And while something like Cloudflare containers suggests this as a [use case](https://blog.cloudflare.com/cloudflare-containers-coming-2025/#stateless-and-global-ffmpeg-everywhere), we didnt want to [blow a hole through our bank account](https://developers.cloudflare.com/containers/pricing/).
+[Cloud compare](https://cloudcompare.xyz/) further drives home these pricing concerns, highlighting scalable cloud compute costs compared to VPS hosting (ol' fashioned long running virtual servers).
+
+### Something in between!
+
+Since transcoding the videos doesn't need as much availability and scaling as the actual consumption of videos, spinning up a encoding server on **existing hardware** is ultimately what we went for.
+
+With cloudflare as the control plane, we can run a transcoding worker service on existing hardware (like mmy old Lenovo Thinkcentre, Gaming PC or literally my laptop!) and use it to encode our videos.
+
+Because our needs sit between:
+
+“I want to pay someone to run my jobs (AWS Fargate)” and “I want a full Kubernetes cluster”, we opted to roll the following bespoke architecture:
+
+```
+Client --> Direct to Background Agent (public URL) --> Agent runs FFmpeg --> uploads HLS to R2
+
+```
+
+##### Workers
+
+We use [tus-node-server](https://github.com/tus/tus-node-server?tab=readme-ov-file) to handle the upload of the video files.
+
+##### Background Agent
+
+### 4 - the ui
+
+We
+
+## Conclusion
+
+In the future, we'll look at adding DASH support - enabling more bandwidth friendly codecs.
+
+Some other options:
+https://streav.com/
+
+## Further reading
+
+- Syntax Podcast Episode
+- [How HLS works](https://jazco.dev/2024/07/05/hls/)
+- [Subatic story](https://subatic.com/story)
