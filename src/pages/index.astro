@@ -90,37 +90,39 @@ const homeSchema = {
       </div>
     </section>
 
-    <section class="space-y-3" id="projects">
-      <h2 class="text-xl font-semibold text-foreground md:text-2xl">Sick projects</h2>
-      {
-        projects.slice(0, 3).map((project) => (
-          <p>
-            <a
-              class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
-              href={`/projects/${project.id}`}
-            >
-              {project.data.tagline} →
-            </a>
-          </p>
-        ))
-      }
-    </section>
+    <div class="grid sm:grid-cols-2 gap-10">
+      <section class="space-y-3" id="projects">
+        <h2 class="text-xl font-semibold text-foreground md:text-2xl">Sick projects</h2>
+        {
+          projects.slice(0, 3).map((project) => (
+            <p>
+              <a
+                class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
+                href={`/projects/${project.id}`}
+              >
+                {project.data.tagline} →
+              </a>
+            </p>
+          ))
+        }
+      </section>
 
-    <section class="space-y-3" id="writing">
-      <h2 class="text-xl font-semibold text-foreground md:text-2xl">Latest writing</h2>
-      {
-        writing.slice(0, 3).map((post) => (
-          <p>
-            <a
-              class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
-              href={`/${post.id}`}
-            >
-              {post.data.title} →
-            </a>
-          </p>
-        ))
-      }
-    </section>
+      <section class="space-y-3" id="writing">
+        <h2 class="text-xl font-semibold text-foreground md:text-2xl">Latest writing</h2>
+        {
+          writing.slice(0, 3).map((post) => (
+            <p>
+              <a
+                class="text-sm leading-snug text-body-copy transition-colors hover:text-accent md:text-lg md:leading-snug"
+                href={`/${post.id}`}
+              >
+                {post.data.title} →
+              </a>
+            </p>
+          ))
+        }
+      </section>
+    </div>
 
     <section class="space-y-3 mb-8" id="moments">
       <h2 class="text-lg font-semibold text-foreground md:text-2xl">Me in action</h2>
