@@ -177,46 +177,56 @@ With these two I have all I need to encode my vids.
 - the **client**: your browser that uploads the vid straight to the agent. 
 
 
-we opted to roll the following bespoke architecture:
+This is what the upload flow looks like:
 
---> Client hits the upload page  
---> Orchestrator points Client to Agent  
---> Direct file upload to Agent (public URL)  
---> Agent runs FFmpeg and make HLS playlist  
---> we upload HLS playlist and chunks to R2  
---> video upload done 💸
 
-### Tech
+<div className="hidden dark:block">
+  ![The architechture for this bad boi](./uploads-dark.svg)
+</div>
 
-The juicy bit! 
+<div className="block dark:hidden">
+  ![The architechture for this bad boi](./uploads-light.svg)
+</div>
 
-I could probably yap on a about this forever so I'm gonna take a bit of an alternative approach here and tell you to [clone the repo](https://github.com/TomRadford/streamgeek) have a poke around and ask your AI agent to explain how all the things work! (it'll do it better than me lol)
 
-However, here is a short breakdown with my rational for each of the choices: 
+For the client-to-agent upload bit, I use the [tus](https://tus.io/) protocol to handle resumable uploads:
 
-#### The web app
+
+<div class="aspect-4/3 overflow-hidden rounded-2xl">
+    <iframe class="size-full" src="https://video.rad.gdn/embed/QGjjLdMqExb" title="Resumable uploads 📶" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+</div>
+
+> I hit reload on my browser around 71%. When I started re-uploading the same file, the magical `tus` was able to let us pick up where we left off 🤝
+
+
+And then I use [Server sent events (SSE)](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events) to stream realtime transcode status updates from ffmpeg:
+
+<div class="aspect-16/9 overflow-hidden rounded-2xl">
+    <iframe class="size-full" src="https://video.rad.gdn/embed/L7P23Bs0Emo" title="Upload progress via SSE 🏗️" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+</div>
+
+> This is the SSE connection in my network tab, sending over yummy updates about everything that's going down (which is allows me to render a fun ui to watch instead of a lame % bar)
+
+### The code
+
+I could yap on about code specifics but I'd rather say [cloning the repo](https://github.com/TomRadford/streamgeek) and have a poke around.
+
+But here's a little summary of some of the main technologies I used to make this cat meow:
+
+#### Core tech used
 
 - React with RSC using [rwsk](https://rwsdk.com/) (shoutout to Peter and Justin! 🇿🇦) 
-- Tailwind
-- 
+- Hono with [RPC](https://hono.dev/docs/guides/rpc) for typesafe client ↔ agent and orchestrator ↔ agent communication (where [React server functions](https://react.dev/reference/rsc/server-functions) didnt make sense)
+- [tus-node-server](https://github.com/tus/tus-node-server?tab=readme-ov-file) and [uppy tus](ttps://uppy.io/docs/tus/) to handle yeeting files from client to agent in chunks resumably
+- [Cloudflare workers](https://www.cloudflare.com/products/workers/)
 
-- I use [tus-node-server](https://github.com/tus/tus-node-server?tab=readme-ov-file) to handle yeet 
-
-##### Background Agent
-
-### 4 - the ui
-
-We
 
 ## Conclusion
 
-This was a super fun endevour. As you can hopefully tell, coming from a video production background, I'm very passionate building stuff like this!
+This was a super fun endevour and was quite the learning experience 🤓 
 
-Absolutely stoked I got to share my learning with you - thanks for reading up to know homie. You're one of the real ones. 
+Absolutely stoked I got to share this with ya! 
 
+![Thanks for reading up to now homie 🫂](./real-one.gif)
 
-## Further reading
-
-- [Syntax Podcast Episode](https://syntax.fm/show/859/streaming-video-in-2025)
-- [How HLS works](https://jazco.dev/2024/07/05/hls/)
-- [Subatic story](https://subatic.com/story)
+This hand-written article was incredibly enjoyable to cook up, if you enjoyed it too - you should stick around and give more of my stuff a look ;)
