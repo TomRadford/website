@@ -5,8 +5,8 @@ import RootLayout from '../../layouts/RootLayout.astro';
 import PageLayout from '../../layouts/PageLayout.astro';
 import { PROJECTS_INDEX_OG_IMAGE } from '../../utils/open-graph';
 
-const projects = (await getCollection('projects')).sort((a, b) =>
-  a.data.title.localeCompare(b.data.title)
+const projects = (await getCollection('projects')).sort(
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
 );
 
 const items = projects.map((project) => ({
