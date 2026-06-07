@@ -15,8 +15,8 @@ import { DEFAULT_OG_IMAGE } from '../utils/open-graph';
 import heroPortrait from '../assets/hero-portrait.png';
 
 const moments = await getCollection('moments');
-const projects = (await getCollection('projects')).sort((a, b) =>
-  a.data.title.localeCompare(b.data.title)
+const projects = (await getCollection('projects')).sort(
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
 );
 const writing = (await getCollection('writing')).sort(
   (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
